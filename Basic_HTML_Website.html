@@ -5,26 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Basic HTML Website</title>
+    <link rel="stylesheet" href="../Personal Portfolio/Personal Portpolio.css">
 </head>
 
 <body>
-    <header>
-        <span>your name</span>
-        <nav>
-            <li>Home</li>
-            <li>Projects</li>
-            <li>Articles</li>
-            <li>Contact</li>
-        </nav>
-        <h1>Frontend Developer</h1>
-        <p>html only with proper layout, no styling</p>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://via.placeholder.com/50" alt="Logo" class="logo-img">
+                <span class="logo">your name</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Articles</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-content">
+            <h1>Frontend Developer</h1>
+            <p>html only with proper layout, no styling</p>
+        </div>
     </header>
 
     <main>
-        <section>
-            <div>
-                <h2>Projects</h2>
-                <ul>
+        <section class="mainContent">
+            <div class="projects">
+                <h2 class="PTitle">Projects</h2>
+                <ul class="project-list">
                     <li>HTML Only Portfoilio</li>
                     <li>Calculator</li>
                     <li>Quiz App</li>
@@ -33,18 +43,21 @@
                 </ul>
             </div>
 
-            <div>
-                <h2>Work Experience</h2>
-                <h3>roadmap.sh</h3>
-                <p>Solved all the fronted projects</p>
-                <a href="#">Visit my Profile</a>
+            <div class="workExperience">
+                <div class="workExperienceTitle">
+                    <h2 class="WTitle">Work Experience</h2>
+                    <h3>roadmap.sh</h3>
+                    <p>Solved all the fronted projects</p>
+                    <a href="#">Visit my Profile</a>
+                </div>
 
-                <h3>OpenSource Work</h3>
+                <h3 class="openSource">OpenSource Work</h3>
                 <p>Contributed to 50pensource projects. Made my own projects with 200 GitHub Stars.</p>
                 <a href="#">Visit my GitHub Profile</a>
             </div>
-            <div>
-                <h2>Education</h2>
+
+            <div class="education">
+                <h2 class="ETitle">Education</h2>
                 <p>Graduated with 3.76 out of 4 CGPA. Won Acme Hackathon. Organized 30 sessions.</p>
                 <h3>Course I took:</h3>
                 <ul>
@@ -60,22 +73,24 @@
                 </ul>
             </div>
         </section>
-        <section>
-            <h2>Reviews from my Teachers</h2>
-            <div>
-                <p>John doe was a brilliant student; always stood out with his assignments.</p>
-                <span>Jane Doe</span>
-                <span>Assistant Professor</span>
-            </div>
-            <div>
-                <p>John doe was a brilliant student; always stood out with his assignments.</p>
-                <span>Jane Doe</span>
-                <span>Assistant Professor</span>
-            </div>
-            <div>
-                <p>John doe was a brilliant student; always stood out with his assignments.</p>
-                <span>Jane Doe</span>
-                <span>Assistant Professor</span>
+        <section class="reviews">
+            <h2 class="RTitle">Reviews from my Teachers</h2>
+            <div class="review-container">
+                <div>
+                    <p>John doe was a brilliant student; always stood out with his assignments.</p>
+                    <span>Jane Doe</span>
+                    <span>Assistant Professor</span>
+                </div>
+                <div>
+                    <p>John doe was a brilliant student; always stood out with his assignments.</p>
+                    <span>Jane Doe</span>
+                    <span>Assistant Professor</span>
+                </div>
+                <div>
+                    <p>John doe was a brilliant student; always stood out with his assignments.</p>
+                    <span>Jane Doe</span>
+                    <span>Assistant Professor</span>
+                </div>
             </div>
         </section>
     </main>
