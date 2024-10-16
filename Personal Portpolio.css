@@ -10,50 +10,50 @@ body {
     padding: 20px;
 }
 
-.header {
+.main-header {
     margin-bottom: 20px;
     border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
 }
 
-.header-container {
+.header-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.logo-container {
+.logo-wrapper {
     display: flex;
     align-items: center;
 }
 
-.logo-img {
+.logo-image {
     width: 30px;
     height: 30px;
     margin-right: 10px;
 }
 
-.logo {
+.logo-text {
     font-size: 1.5em;
 }
 
-nav ul {
+.main-nav .nav-list {
     list-style-type: none;
     display: flex;
 }
 
-nav ul li {
+.nav-item {
     margin: 0 10px;
 }
 
-nav ul li a {
+.nav-link {
     text-decoration: none;
     color: black;
 }
 
-.header-content {
+.hero-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,20 +61,20 @@ nav ul li a {
     margin: 50px 0;
 }
 
-h1 {
+.hero-title {
     font-size: 5vw;
     margin-bottom: 10px;
 }
 
-.mainContent {
+.main-content {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.projects,
-.workExperience,
-.education {
+.projects-section,
+.experience-section,
+.education-section {
     flex: 1 1 300px;
     border: 1px solid black;
     border-radius: 10px;
@@ -83,55 +83,52 @@ h1 {
     flex-direction: column;
 }
 
-.project-list {
+.projects-list {
     list-style-type: none;
     padding: 0;
     margin: 0;
     flex-grow: 1;
 }
 
-.project-list li {
+.project-item {
     border-bottom: 1px solid black;
     padding: 5px 0;
 }
 
-.project-list li:last-child {
+.project-item:last-child {
     border-bottom: none;
 }
 
-.openSource {
+.opensource-item {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
 }
 
-.openSource p {
+.opensource-item p {
     margin-bottom: 10px;
 }
 
-.workExperience {
+.experience-section {
     display: flex;
     flex-direction: column;
 }
 
-.workExperienceTitle {
+.experience-item {
     padding-bottom: 10px;
     border-bottom: 1px solid black;
     margin-bottom: 10px;
 }
 
-.WTitle,
-.PTitle,
-.ETitle,
-.RTitle {
+.section-title {
     padding-bottom: 1em;
 }
 
-.reviews {
+.reviews-section {
     margin-top: 20px;
 }
 
-.review-container {
+.reviews-wrapper {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -139,93 +136,92 @@ h1 {
     margin: 20px 5%;
 }
 
-.review-container>div {
+.review-item {
     flex: 1 1 calc(33.333% - 20px);
     border: 1px solid #ccc;
     border-radius: 20px;
     padding: 10px;
 }
 
-.review-container>div>span {
+.reviewer-name,
+.reviewer-title {
     color: gray;
 }
 
-footer {
+.main-footer {
     margin-top: 20px;
     text-align: center;
 }
 
 @media (max-width: 768px) {
-    .header-container {
+    .header-wrapper {
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
 
-    .logo-container {
+    .logo-wrapper {
         margin-bottom: 10px;
     }
 
-    nav {
+    .main-nav {
         width: 100%;
     }
 
-    nav ul {
+    .nav-list {
         flex-direction: column;
         align-items: center;
     }
 
-    nav ul li {
+    .nav-item {
         margin: 5px 0;
     }
 
-    h1 {
+    .hero-title {
         font-size: 8vw;
     }
 
-    .mainContent {
+    .main-content {
         flex-direction: column;
     }
 
-    .projects {
+    .projects-section {
         text-align: center;
     }
 
-    .project-list {
+    .projects-list {
         display: inline-block;
         text-align: center;
     }
 
-    .project-list li {
+    .project-item {
         text-align: center;
     }
 
-    .review-container {
+    .reviews-wrapper {
         flex-direction: column;
     }
 
-    .review-container>div {
+    .review-item {
         flex: 1 1 100%;
     }
 
-    .Wtitle,
-    .PTitle,
-    .ETitle {
+    .section-title {
         text-align: center;
         align-items: center;
     }
 
-    .education ul {
+    .course-list {
         text-align: left;
     }
 }
 
-.education ul {
+.course-list {
     list-style-position: inside;
     padding-left: 0;
 }
 
-.education li {
+.course-item {
     text-indent: -1.4em;
     padding-left: 1.4em;
     margin-bottom: 5px;
