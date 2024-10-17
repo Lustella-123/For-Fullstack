@@ -1,12 +1,11 @@
-# Basic-HTML-Website-Project
+For-Fullstack
 
-https://roadmap.sh/projects/basic-html-website
 
 Single-Page CV
 - https://roadmap.sh/projects/single-page-cv
 
 Basic HTML Website
-- https://roadmap.sh/projects/basic-html-website/solutions?u=670d02a4791f57dd60cc36ae
+- https://roadmap.sh/projects/basic-html-website
 
 Personal Portfolio
 - https://roadmap.sh/projects/portfolio-website
