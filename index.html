@@ -91,8 +91,8 @@
         let rows = [];
 
         $(document).ready(async function () {
-            // 영화 기록하기 버튼 클릭시 입력폼 토글
-            $('.btn-outline-light').click(function () {
+            // 영화 기록하기 버튼 클릭시 입력폼 토글 (첫 번째 버튼만 선택)
+            $('.btn-outline-light:first').click(function () {
                 $('.mypostingbox').toggle();
             });
 
@@ -199,11 +199,11 @@
 
     <div class="mypostingbox">
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="image" placeholder="영화 이미지 주소">
+            <input type="text" class="form-control" id="image" placeholder="영화 이미지 주소">
             <label for="image">영화 이미지 주소</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="title" placeholder="영화 제목">
+            <input type="text" class="form-control" id="title" placeholder="영화 제목">
             <label for="title">영화 제목</label>
         </div>
         <div class="input-group mb-3">
@@ -218,7 +218,7 @@
             </select>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="comment" placeholder="추천 이유">
+            <input type="text" class="form-control" id="comment" placeholder="추천 이유">
             <label for="comment">추천 이유</label>
         </div>
         <button id="postingbtn" class="btn btn-danger">기록하기</button>
