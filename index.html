@@ -91,40 +91,52 @@
         let rows = [];
 
         $(document).ready(async function () {
-            // 영화 기록하기 버튼 클릭시 입력폼 토글 (첫 번째 버튼만 선택)
-            $('.btn-outline-light:first').click(function () {
+            // 영화 기록하기 버튼 클릭시 입력폼 토글
+            $('#postingToggleBtn').click(function () {
                 $('.mypostingbox').toggle();
             });
 
             // 기록하기 버튼 클릭 이벤트
             $('#postingbtn').click(async function () {
-                let image = $('#image').val();
-                let title = $('#title').val();
-                let star = $('#star').val();
-                let comment = $('#comment').val();
+                let image = $('#movieImage').val();
+                let title = $('#movieTitle').val();
+                let star = $('#movieStar').val();
+                let comment = $('#movieComment').val();
 
-                if (!image || !title || !star || !comment) {
-                    alert('모든 항목을 입력해주세요!');
+                console.log('입력값:', {image, title, star, comment});  // 디버깅용
+
+                if (!image) {
+                    alert('이미지 URL을 입력해주세요!');
+                    return;
+                }
+                if (!title) {
+                    alert('영화 제목을 입력해주세요!');
+                    return;
+                }
+                if (!star || star === '별점선택') {
+                    alert('별점을 선택해주세요!');
+                    return;
+                }
+                if (!comment) {
+                    alert('추천 이유를 입력해주세요!');
                     return;
                 }
 
                 let doc = {
                     'image': image,
                     'title': title,
-                    'star': star,
+                    'star': parseInt(star),
                     'comment': comment
                 };
 
-                await addDoc(collection(db, "movies"), doc);
-                alert('영화가 등록되었습니다!');
-
-                // 입력 필드 초기화
-                $('#image').val('');
-                $('#title').val('');
-                $('#star').val('별점선택');
-                $('#comment').val('');
-
-                window.location.reload();
+                try {
+                    await addDoc(collection(db, "movies"), doc);
+                    alert('영화가 등록되었습니다!');
+                    window.location.reload();
+                } catch (error) {
+                    console.error("Error adding document: ", error);
+                    alert('영화 등록에 실패했습니다. 다시 시도해주세요.');
+                }
             });
 
             // 페이지 로드시 영화 목록 가져오기
@@ -188,10 +200,10 @@
     <div class="main">
         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
             <div class="container-fluid py-5">
-                <h1 id="title" class="display-5 fw-bold">킹덤</h1>
+                <h1 class="display-5 fw-bold">킹덤</h1>
                 <p class="col-md-8 fs-4">병든 왕을 둘러싸고 흉흉한 소문이 떠돈다. 어둠에 뒤덮인 조선, 기이한 역병에 신음하는 산하. 정체 모를 악에 맞서 백성을 구원할 희망은 오직
                     세자뿐이다.</p>
-                <button type="button" class="btn btn-outline-light">영화 기록하기</button>
+                <button type="button" class="btn btn-outline-light" id="postingToggleBtn">영화 기록하기</button>
                 <button type="button" class="btn btn-outline-light">상세정보</button>
             </div>
         </div>
@@ -199,16 +211,16 @@
 
     <div class="mypostingbox">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="image" placeholder="영화 이미지 주소">
-            <label for="image">영화 이미지 주소</label>
+            <input type="text" class="form-control" id="movieImage" placeholder="영화 이미지 주소">
+            <label for="movieImage">영화 이미지 주소</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="title" placeholder="영화 제목">
-            <label for="title">영화 제목</label>
+            <input type="text" class="form-control" id="movieTitle" placeholder="영화 제목">
+            <label for="movieTitle">영화 제목</label>
         </div>
         <div class="input-group mb-3">
-            <label class="input-group-text" for="star">별점</label>
-            <select class="form-select" id="star">
+            <label class="input-group-text" for="movieStar">별점</label>
+            <select class="form-select" id="movieStar">
                 <option selected>별점선택</option>
                 <option value="1">⭐</option>
                 <option value="2">⭐⭐</option>
@@ -218,8 +230,8 @@
             </select>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="comment" placeholder="추천 이유">
-            <label for="comment">추천 이유</label>
+            <input type="text" class="form-control" id="movieComment" placeholder="추천 이유">
+            <label for="movieComment">추천 이유</label>
         </div>
         <button id="postingbtn" class="btn btn-danger">기록하기</button>
     </div>
