@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우리 팀 소개</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .member {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            padding: 20px;
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .member:hover {
+            transform: scale(1.05);
+        }
+
+        .member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>우리 팀을 소개합니다!</h1>
+        <p>저희 팀은 열정과 창의성으로 뭉친 개발자, 디자이너, 기획자들이 모인 팀입니다.</p>
+    </header>
+    
+    <section class="team-members">
+        <div class="member">
+            <img src="images/member1.jpg" alt="멤버1 사진">
+            <h2>김철수 - 팀장 / 백엔드 개발자</h2>
+            <p>백엔드 시스템을 설계하고 개발하며, 팀의 기술적인 방향을 이끌어가고 있습니다. 철저한 분석과 효율적인 코드로 팀을 지원합니다.</p>
+        </div>
+        
+        <div class="member">
+            <img src="images/member2.jpg" alt="멤버2 사진">
+            <h2>이영희 - 프론트엔드 개발자</h2>
+            <p>사용자 친화적인 UI/UX를 디자인하고 구현하며, 사용자 경험을 최우선으로 생각합니다. 웹의 아름다움을 책임집니다.</p>
+        </div>
+        
+        <div class="member">
+            <img src="images/member3.jpg" alt="멤버3 사진">
+            <h2>박민수 - 디자이너</h2>
+            <p>시각적 요소를 효과적으로 표현하고 브랜드 아이덴티티를 강화하는 역할을 맡고 있습니다. 창의적인 비주얼로 프로젝트의 가치를 높입니다.</p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>우리 팀과 함께 하고 싶다면 <a href="mailto:contact@ourteam.com">contact@ourteam.com</a>으로 연락 주세요!</p>
+    </footer>
+</body>
+</html>
