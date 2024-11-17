@@ -1,0 +1,228 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.main-header {
+    margin-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5em;
+}
+
+.main-nav .nav-list {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-item {
+    margin: 0 10px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.hero-title {
+    font-size: 5vw;
+    margin-bottom: 10px;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.projects-section,
+.experience-section,
+.education-section {
+    flex: 1 1 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.projects-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.project-item {
+    border-bottom: 1px solid black;
+    padding: 5px 0;
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+.opensource-item {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.opensource-item p {
+    margin-bottom: 10px;
+}
+
+.experience-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.experience-item {
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    padding-bottom: 1em;
+}
+
+.reviews-section {
+    margin-top: 20px;
+}
+
+.reviews-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    margin: 20px 5%;
+}
+
+.review-item {
+    flex: 1 1 calc(33.333% - 20px);
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.reviewer-name,
+.reviewer-title {
+    color: gray;
+}
+
+.main-footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .header-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo-wrapper {
+        margin-bottom: 10px;
+    }
+
+    .main-nav {
+        width: 100%;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-item {
+        margin: 5px 0;
+    }
+
+    .hero-title {
+        font-size: 8vw;
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+
+    .projects-section {
+        text-align: center;
+    }
+
+    .projects-list {
+        display: inline-block;
+        text-align: center;
+    }
+
+    .project-item {
+        text-align: center;
+    }
+
+    .reviews-wrapper {
+        flex-direction: column;
+    }
+
+    .review-item {
+        flex: 1 1 100%;
+    }
+
+    .section-title {
+        text-align: center;
+        align-items: center;
+    }
+
+    .course-list {
+        text-align: left;
+    }
+}
+
+.course-list {
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+.course-item {
+    text-indent: -1.4em;
+    padding-left: 1.4em;
+    margin-bottom: 5px;
+}
