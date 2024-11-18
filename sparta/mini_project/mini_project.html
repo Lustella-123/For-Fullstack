@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Introduction</title>
+    <style>
+        /* reset */
+        html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* reset */
+
+        body {
+            margin: 20px;
+            background-color: #caf0f8;
+        }
+        .header {
+            font-size: 5em;
+            background-color: #48cae4;
+            text-align: left;
+            padding: 20px 40px;
+            border-radius: 30px;
+            margin: 20px 0;
+            display: inline-block;
+            width: auto;
+        }
+        .team-intro {
+            font-size: 5em;
+        }
+        .team-intro-p {
+            font-size: 3em;
+        }
+        .content {
+            background-image: url(./img/bg.jpg);
+            border: 1px solid #48cae4;
+            display: flex;
+            justify-content: space-between;
+            padding: 1em;
+            margin: 1em;
+        }
+        .raft {
+            justify-content: right;
+            border-radius: 30px;
+        }
+        .teamintro {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 20px;
+        }
+        .teamcard {
+            background-color: white;
+            width: 200px;
+            height: 300px;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            margin: 0 20px;
+        }
+        .teamcard {
+            transition: all 0.3s ease;
+        }
+        .teamcard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .record {
+            border: 1px solid #48cae4;
+           padding: 20px;
+           margin: 20px auto;
+           max-width: 500px;
+           background-size: cover;
+           background-position: center;
+        }
+
+        .record-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .record-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .record-card .name {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .record-card .content {
+            color: #666;
+            line-height: 1.5;
+        }
+        .rubik-wet-paint-regular {
+  font-family: "Rubik Wet Paint", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.dokdo-regular {
+  font-family: "Dokdo", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+    </style>
+    <!-- 영어 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Port+Lligat+Sans&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+    <!-- 한글 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dokdo&family=Itim&family=Port+Lligat+Sans&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header rubik-wet-paint-regular">
+    <h1>래프트(From Garbage)</h1>
+    </div>
+    <div class="content">
+        <div>
+        <h2 class="team-intro dokdo-regular">팀 소개</h2>
+        <p class="team-intro-p dokdo-regular">안녕하세요. 저희는 공통 취미인 게임에서 4명이 다 아는 게임인 RAFT를 주요 아이템으로 가져와 팀 소개를 꾸몄습니다.</p>
+    </div>
+        <div class = "raft">
+            <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/648800/header.jpg?t=1727184011" alt="raft">
+        </div>
+    </div>
+    <div class="teamintro">
+        <div class="teamcard">
+            <img src="./img/teamintro.jpg" alt="teamintro">
+            <hr>
+            <h3>한성우</h3>
+            <p>팀 소개 내용 ---</p>
+        </div>
+        <div class="teamcard">
+            <img src="./img/teamintro.jpg" alt="teamintro">
+            <hr>
+            <h3>박재성</h3>
+            <p>팀 소개 내용 ---</p>
+        </div>
+        <div class="teamcard">
+            <img src="./img/teamintro.jpg" alt="teamintro">
+            <hr>
+            <h3>방동혁</h3>
+            <p>팀 소개 내용 ---</p>
+        </div>
+        <div class="teamcard">
+            <img src="./img/teamintro.jpg" alt="teamintro">
+            <hr>
+            <h3>이승찬</h3>
+            <p>팀 소개 내용 ---</p>
+        </div>
+    </div>
+    <div class="record">
+        <h2>방명록 남기기</h2>
+        <hr>
+        <h3>이름</h3>
+        <input type="text">
+        <p>내용</p>
+        <input type="text">
+    </div>
+    <div class="record-container">
+        <div class="record-card">
+            <div>박재성</div>
+            <hr>
+            <div>멋진 페이지 꾸미셨네요!</div>
+        </div>
+    </div>
+</body>
+</html>

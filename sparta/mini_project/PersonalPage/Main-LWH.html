@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect JaeSeong</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .MainBody {
+            background-color: #90e0ef;
+            width: 97%;
+            height: auto;
+        }
+
+        /* 이동 상자 */
+        .fixed-navigation {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .nav-button img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 이동 상자 */
+
+        .sideBox {
+            background-color: white;
+            width: 20vh;
+            height: 30vh;
+            top: 25vh;
+            right: 1vh;
+            position: fixed;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .voteText {
+            font-size: 2vh;
+            margin-bottom: 10px;
+        }
+
+        .graph {
+            width: 15vh;
+            height: 15vh;
+            background-color: #f0f0f0;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .votes {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .buttons {
+            justify-content: space-between;
+            margin-top: 2vh;
+        }
+
+        .button {
+            width: 40%;
+            height: 20%;
+        }
+
+        .contact-box {
+            position: fixed;
+            bottom: 0vh;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 10vh;
+            z-index: 100;
+        }
+
+        .content {
+            font-size: 2vh;
+            width: 100%;
+            height: 40%;
+            max-width: 100%;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-text {
+            margin-top: 1vh;
+            text-align: center;
+        }
+
+        .contactButtons {
+            display: flex;
+            gap: 1vh;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1vh;
+        }
+
+        /* 12 */
+        .btn-12 {
+            position: relative;
+            right: 20px;
+            bottom: 20px;
+            border: none;
+            box-shadow: none;
+            width: 130px;
+            height: 40px;
+            line-height: 42px;
+            -webkit-perspective: 230px;
+            perspective: 230px;
+        }
+
+        .btn-12 span {
+            background: rgb(0, 172, 238);
+            background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%);
+            display: block;
+            position: absolute;
+            width: 130px;
+            height: 40px;
+            box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+                7px 7px 20px 0px rgba(0, 0, 0, .1),
+                4px 4px 5px 0px rgba(0, 0, 0, .1);
+            border-radius: 5px;
+            margin: 0;
+            text-align: center;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-transition: all .3s;
+            transition: all .3s;
+        }
+
+        .btn-12 span:nth-child(1) {
+            box-shadow:
+                -7px -7px 20px 0px #fff9,
+                -4px -4px 5px 0px #fff9,
+                7px 7px 20px 0px #0002,
+                4px 4px 5px 0px #0001;
+            -webkit-transform: rotateX(90deg);
+            -moz-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+            -webkit-transform-origin: 50% 50% -20px;
+            -moz-transform-origin: 50% 50% -20px;
+            transform-origin: 50% 50% -20px;
+        }
+
+        .btn-12 span:nth-child(2) {
+            -webkit-transform: rotateX(0deg);
+            -moz-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+            -webkit-transform-origin: 50% 50% -20px;
+            -moz-transform-origin: 50% 50% -20px;
+            transform-origin: 50% 50% -20px;
+        }
+
+        .btn-12:hover span:nth-child(1) {
+            box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+                7px 7px 20px 0px rgba(0, 0, 0, .1),
+                4px 4px 5px 0px rgba(0, 0, 0, .1);
+            -webkit-transform: rotateX(0deg);
+            -moz-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+        }
+
+        .btn-12:hover span:nth-child(2) {
+            box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+                7px 7px 20px 0px rgba(0, 0, 0, .1),
+                4px 4px 5px 0px rgba(0, 0, 0, .1);
+            color: transparent;
+            -webkit-transform: rotateX(-90deg);
+            -moz-transform: rotateX(-90deg);
+            transform: rotateX(-90deg);
+        }
+
+        .FirstBox {
+            background-image: url('https://images.unsplash.com/photo-1730322477867-a57b0e0ffad8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDQxfEpwZzZLaWRsLUhrfHxlbnwwfHx8fHw%3D');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 95vh;
+            margin: 2vh 1vh 3vh 3vh;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .Firstgreeting {
+            color: white;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+
+        .SecondBox {
+            background-image: url('https://images.unsplash.com/Ys-DBJeX0nE.JPG?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            display: block;
+            width: 100%;
+            height: 95vh;
+            margin: 2vh 1vh 3vh 3vh;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .UpperBox {
+            display: flex;
+            height: 45%;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 2vh;
+            margin-bottom: 0;
+        }
+
+        .firstPic {
+            background-image: url('https://github.com/Lustella-123/Lustella-123/blob/main/%EA%B3%A0%EC%96%91%EC%9D%B4.jpeg?raw=true');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 30%;
+            height: 100%;
+            border-radius: 8px;
+            display: inline-block;
+            margin-right: 10vh;
+            margin: 2vh;
+        }
+
+        .container {
+            background-image: url('https://media.istockphoto.com/id/1300107681/ko/%EC%82%AC%EC%A7%84/%EB%8C%80%EC%84%9C%EC%96%91-%EC%9D%98-%ED%91%9C%EB%A9%B4.jpg?s=612x612&w=0&k=20&c=p_vW3L_1A7moSNqHpavoW8EmmiiKOM4bwQM7rSvt5OY=');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            width: 40vw;
+            height: 100%;
+            border-radius: 8px;
+            display: inline-block;
+            margin-right: 2vh;
+        }
+
+        .myInfo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #FFD700;
+            font-size: 3vh;
+        }
+
+        .info-box {
+            padding: 1vh;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .minInfoBoxes {
+            background-color: #F5F5DC;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+            border-radius: 10px;
+        }
+
+        .info-item {
+            font-size: 3vh;
+            margin: 5px 0;
+        }
+
+        .greetingBox {
+            background-color: #F5F5DC;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 90%;
+            height: 35%;
+            margin: 2vh 3vh 1vh 3vh;
+            border-radius: 10px;
+            font-size: 2vh;
+        }
+
+        .LowerBox {
+            display: block;
+            width: 100%;
+            height: 45%;
+            align-items: center;
+            margin: 2vh auto 0;
+        }
+
+        .firstIntroBox {
+            width: 96%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin: auto;
+            padding: 2%;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .firstIntro {
+            margin: 1% 0 0 1%;
+
+        }
+
+        .greeting {
+            font-size: 1.2em;
+            margin-left: 20px;
+            margin-right: 20px;
+            color: #555555;
+        }
+
+        .ThirdBox {
+            position: relative;
+            background-color: lightpink;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 95vh;
+            margin: 2vh 1vh 3vh 3vh;
+            padding: 2vh;
+            box-sizing: border-box;
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 3vh;
+            color: black;
+            margin-bottom: 3vh;
+        }
+
+        .scattered-images {
+
+            width: 80vw;
+            height: 80vh;
+            position: relative;
+        }
+
+        .card {
+            width: auto;
+            height: 1000px;
+            max-width: 20vw;
+            max-height: 35vh;
+            overflow: hidden;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .card:hover {
+            transform: translate(-50%, -60%) translateY(-10px);
+            box-shadow: 0 2vh 5vh rgba(0, 0, 0, 0.3);
+        }
+
+        .scattered-images .card1,
+        .scattered-images .card2,
+        .scattered-images .card3,
+        .scattered-images .card4 {
+            width: 18vh;
+            height: 18vh;
+            position: absolute;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .card1 {
+            top: 10%;
+            left: 5%;
+            transform: rotate(-10deg);
+        }
+
+        .card2 {
+            top: 10%;
+            right: 10%;
+            transform: rotate(8deg);
+        }
+
+        .card3 {
+            bottom: 15%;
+            left: 8%;
+            transform: rotate(-5deg);
+        }
+
+        .card4 {
+            bottom: 20%;
+            right: 12%;
+            transform: rotate(12deg);
+        }
+
+        .ForthBox {
+            background-image: url('https://images.unsplash.com/photo-1546188994-07c34f6e5e1b?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            display: block;
+            width: 100%;
+            height: 95vh;
+            margin: 2vh 1vh 3vh 3vh;
+            padding: 2vh;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .PNF {
+            font-size: 5vh;
+            margin-bottom: 2vh;
+            text-align: center;
+        }
+
+        .container2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .section {
+            width: 100%;
+        }
+
+        .section h2 {
+            font-size: 3vh;
+            text-align: left;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: "";
+            display: block;
+            width: 30%;
+            height: 0.3vh;
+            background: black;
+        }
+
+        .SecondForth {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            padding-top: 2vh;
+        }
+
+        .ForthForth {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            padding-top: 2vh;
+        }
+
+        .box {
+            aspect-ratio: 2 / 3;
+            max-height: 30vh;
+            width: 28vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 1vh;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid white;
+            border-radius: 10px;
+            padding: 1vh;
+        }
+
+        .box img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 75%;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 1vh;
+        }
+
+        .description {
+            padding: 1vh;
+            font-size: 1.5vh;
+            color: black;
+            text-align: center;
+        }
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- jQuery 라이브러리 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+
+    <!-- Chart.js 라이브러리 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore, collection, doc, updateDoc, getDoc, setDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+        // Firebase 구성 초기화
+        const firebaseConfig = {
+            apiKey: "AIzaSyAtHlJLsyoZ4__m1-eXMaBBvpJNeJD74js",
+            authDomain: "sprta-f3322.firebaseapp.com",
+            projectId: "sprta-f3322",
+            storageBucket: "sprta-f3322.firebasestorage.app",
+            messagingSenderId: "56818984443",
+            appId: "1:56818984443:web:fc1b3289fa5e6e969a575e",
+            measurementId: "G-WZLQRD938T"
+        };
+
+        // Firebase 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        $(document).ready(function () {
+            // 투표 버튼 클릭 이벤트 처리
+            $('#voteBtn').on('click', async function () {
+                const selectedValue = $('input[name="flexRadioDefault"]:checked').val();
+
+                if (selectedValue) {
+                    try {
+                        // Firestore에서 선택한 값에 해당하는 문서 참조
+                        const voteDocRef = doc(db, "votes", selectedValue);
+                        const voteDoc = await getDoc(voteDocRef);
+
+                        if (voteDoc.exists()) {
+                            // 기존 값이 있을 경우 업데이트
+                            const currentCount = voteDoc.data().count || 0;
+                            await updateDoc(voteDocRef, { count: currentCount + 1 });
+                        } else {
+                            // 새로운 값 추가
+                            await setDoc(voteDocRef, { count: 1 });
+                        }
+
+                        alert('투표가 완료되었습니다!');
+                    } catch (error) {
+                        console.error('투표 중 오류 발생:', error);
+                    }
+                } else {
+                    alert('선택된 항목이 없습니다.');
+                }
+            });
+
+            // 결과 보기 버튼 클릭 이벤트 처리
+            $('#showResultsBtn').on('click', async function () {
+                try {
+                    // Firestore에서 votes 컬렉션의 모든 문서 가져오기
+                    const querySnapshot = await getDocs(collection(db, "votes"));
+                    const votesData = {};
+
+                    // 가져온 데이터를 votesData 객체에 저장
+                    querySnapshot.forEach((doc) => {
+                        votesData[doc.id] = doc.data().count;
+                    });
+
+                    // 차트 데이터를 생성
+                    const labels = Object.keys(votesData);
+                    const data = Object.values(votesData);
+
+                    // 기존의 차트를 제거하고 새로 생성
+                    $('#voteChart').remove(); // 기존 캔버스를 제거
+                    $('.graph').html('<canvas id="voteChart"></canvas>'); // 새로운 캔버스 추가
+
+                    // Chart.js를 이용하여 차트 그리기
+                    const ctx = document.getElementById('voteChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: '투표 결과',
+                                data: data,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                },
+                                title: {
+                                    display: true,
+                                    text: '투표 결과'
+                                }
+                            }
+                        }
+                    });
+
+                } catch (error) {
+                    console.error('결과를 가져오는 중 오류 발생:', error);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body class="MainBody">
+
+    <!-- 이동 버튼 -->
+    <div class="fixed-navigation">
+        <button class="nav-button" onclick="scrollToPosition('top')">
+            <img src="https://github.com/Lustella-123/Lustella-123/blob/main/B.png?raw=true"
+                alt="Top Button">
+        </button>
+        <button class="nav-button" onclick="scrollToPosition('SecondBox')">
+            <img src="https://github.com/Lustella-123/Lustella-123/blob/main/B.png?raw=true"
+                alt="Second Box Button">
+        </button>
+        <button class="nav-button" onclick="scrollToPosition('ThirdBox')">
+            <img src="https://github.com/Lustella-123/Lustella-123/blob/main/B.png?raw=true"
+                alt="Third Box Button">
+        </button>
+        <button class="nav-button" onclick="scrollToPosition('ForthBox')">
+            <img src="https://github.com/Lustella-123/Lustella-123/blob/main/B.png?raw=true"
+                alt="Forth Box Button">
+        </button>
+    </div>
+    <!-- 이동 버튼 -->
+
+    <div class="sideBox">
+        <h1 class="voteText">팥붕 VS 슈붕</h1>
+        <div class="graph">
+            <!-- 그래프가 여기에 렌더링됨 (기본적으로 빈칸) -->
+            <span>결과 없음</span>
+        </div>
+        <div class="votes">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="팥붕">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    팥붕
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="슈붕"
+                    checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    슈붕
+                </label>
+            </div>
+        </div>
+        <div class="buttons">
+            <button type="button1" class="btn btn-outline-dark" id="voteBtn">vote</button>
+            <button type="button2" class="btn btn-outline-primary" id="showResultsBtn">show</button>
+        </div>
+    </div>
+
+    <div class="FirstBox">
+        <div class="Firstgreeting">
+            Welcome everyone >.< </div>
+        </div>
+
+        <div class="SecondBox">
+
+            <div class="UpperBox">
+                <div class="firstPic">
+
+                </div>
+
+                <div class="container">
+                    <h1 class="myInfo">나의 정보</h1>
+                    <div class="info-box">
+                        <div class="minInfoBoxes">
+                            <div class="info-item">이름: 박재성</div>
+                        </div>
+                        <div class="minInfoBoxes">
+                            <div class="info-item">MBTI: INFP</div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="minInfoBoxes">
+                            <div class="info-item">혈액형: B형</div>
+                        </div>
+                        <div class="minInfoBoxes">
+                            <div class="info-item">나이 : 25살</div>
+                        </div>
+                    </div>
+
+                    <div class="greetingBox">
+                        <p class="greeting">누워서 숨 쉬는걸 가장 좋아하는 사람입니다. 말 걸어주시면 도망가지 않고 대답하도록 노력해보겠습니다!🐛</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="LowerBox">
+                <div class="firstIntroBox">
+                    <div class="firstIntro">비전공자로 최근에 웹개발을 시작한 PJS임니다. 부트캠프를 시작하기 전에 Udemy에서 The Web Developer 2024 과정을
+                        절반 들었습니다. 프론트엔드와 백엔드가 모두 들어있는 과정인데, 아직 프론트엔드밖에 못들어서 백엔드에 관해서는 잘 모릅니다. 하지만 둘 다 잘하는 풀스택 개발자를 최종
+                        목표로 열심히 달려가겠습니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ThirdBox">
+            <h1 class="title">My hobbies</h1>
+
+            <div class="scattered-images">
+                <div class="card">
+                    <img src="https://github.com/Lustella-123/Lustella-123/blob/main/%EB%82%98%EC%9D%98%20%EB%8F%88%EC%9D%80%20%EB%B0%B0%EB%A1%9C%20%EA%B0%84%EB%8B%A4..jpg?raw=true"
+                        alt="중앙 이미지">
+                </div>
+                <img src="https://github.com/Lustella-123/Lustella-123/blob/main/%EB%85%B8%ED%8A%B8%EB%B6%81,%20%EC%B1%85,%20%EC%B9%B4%ED%8E%98.jpeg?raw=true"
+                    alt="이미지 1" class="card1">
+                <img src="https://github.com/Lustella-123/Lustella-123/blob/main/%EB%9D%BC%EB%96%BC%EC%95%84%ED%8A%B8,%20%EC%B1%85.jpeg?raw=true"
+                    alt="이미지 2" class="card2">
+                <img src="https://github.com/Lustella-123/Lustella-123/blob/main/%ED%97%AC%EC%8A%A4.jpeg?raw=true"
+                    alt="이미지 3" class="card3">
+                <img src="https://github.com/Lustella-123/Lustella-123/blob/main/Environmental%20Engineering.jpeg?raw=true"
+                    alt="이미지 4" class="card4">
+            </div>
+        </div>
+
+        <div class="ForthBox">
+            <h1 class="PNF">Past & Future</h1>
+            <div class="container2">
+                <div class="sidebar">
+                    <div class="section">
+                        <div class="firstForth">
+                            <h2>Past</h2>
+                        </div>
+
+                        <div class="SecondForth">
+                            <div class="box">
+                                <img src="https://github.com/Lustella-123/Lustella-123/blob/main/%EC%B1%85.jpeg?raw=true"
+                                    alt="Past Image 1">
+                                <div class="description">I like reading a book.</div>
+                            </div>
+                            <div class="box">
+                                <img src="https://github.com/Lustella-123/Lustella-123/blob/main/%EB%B0%B0%EB%93%9C%EB%AF%BC%ED%84%B4.jpeg?raw=true"
+                                    alt="Past Image 2">
+                                <div class="description">I played badminton much in middle and high school.</div>
+                            </div>
+                            <div class="box">
+                                <img src="https://github.com/Lustella-123/Lustella-123/blob/main/%EB%B0%B0%EA%B7%B8.jpeg?raw=true"
+                                    alt="Past Image 3">
+                                <div class="description">I like playing a game. This is my best game.</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="section">
+                        <div class="ThirdForth">
+                            <h2>Future</h2>
+                        </div>
+
+                        <div class="ForthForth">
+                            <div class="box">
+                                <img src="https://ilovegangwon.com/data/file/humor/15827113263118.gif"
+                                    alt="Future Image 1">
+                                <div class="description">I wanna be a good developer.</div>
+                            </div>
+                            <div class="box">
+                                <img src="https://blog.kakaocdn.net/dn/0dU9E/btrxoHHLcGA/Z3egdaVMXOX40DaYttbO1k/img.jpg"
+                                    alt="Future Image 2">
+                                <div class="description">I want to get married and live a comfortable life.</div>
+                            </div>
+                            <div class="box">
+                                <img src="https://github.com/Lustella-123/Lustella-123/blob/main/%EB%85%B8%ED%8A%B8%EB%B6%81,%20%EC%B1%85,%20%EC%B9%B4%ED%8E%98.jpeg?raw=true"
+                                    alt="Future Image 3">
+                                <div class="description">I wanna enjoy coding, coffee, reading a book in cafe.</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-box">
+            <div class="content" style="width: 18rem;">
+                <div class="contactButtons">
+                    <button class="custom-btn btn-12" style="background-color: transparent;"><span><a
+                                href="https://forstella.tistory.com/"
+                                style="color:black;text-decoration-line: none;">Click!</span></a><span>Blog</span></button>
+                    <button class="custom-btn btn-12" style="background-color: transparent;""><span><a href="
+                        https://github.com/Lustella-123"
+                        style="color:black;text-decoration-line: none;">Click!</span></a><span>Github</span></button>
+                </div>
+            </div>
+
+            <!-- 이동버튼 스크립트 -->
+            <script>
+                function scrollToPosition(targetId) {
+                    if (targetId === 'top') {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        const targetElement = document.getElementsByClassName(targetId)[0];
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }
+                }
+            </script>
+            <!-- 이동버튼 스크립트 -->
+</body>
+
+</html>

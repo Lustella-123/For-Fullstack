@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Hi+Melody&family=Jua&family=Poor+Story&family=Rubik:wght@300&display=swap');
+
+        /* 시작 */
+        * {
+            font-family: "Hi Melody", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .MainBody {
+            background-image: url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdCGNMw%2FbtsKyeNyfO1%2FkJwPtRtpLrwsEHBNM7nFK0%2Fimg.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 97%;
+            height: auto;
+        }
+
+        /* 이동 상자 */
+        .fixed-navigation {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .nav-button img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 이동 상자 */
+
+        .sideBox {
+            background-color: white;
+            width: 20vh;
+            height: 30vh;
+            top: 25vh;
+            right: 1vh;
+            position: fixed;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .voteText {
+            font-size: 2vh;
+            margin-bottom: 10px;
+        }
+
+        .graph {
+            width: 15vh;
+            height: 15vh;
+            background-color: #f0f0f0;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .votes {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .buttons {
+            justify-content: space-between;
+            margin-top: 2vh;
+        }
+
+        .button {
+            width: 40%;
+            height: 20%;
+        }
+
+        .contact-box {
+            position: fixed;
+            bottom: 2vh;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 10vh;
+            max-width: 10vw;
+            max-height: 10vh;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .content {
+            font-size: 2vh;
+            width: 100%;
+            height: 40%;
+            max-width: 100%;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-text {
+            margin-top: 1vh;
+            text-align: center;
+        }
+
+        .contactButtons {
+            display: flex;
+            gap: 1vh;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1vh;
+        }
+
+        .FirstBox {
+            background-image: url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F2Ncaj%2FbtsKzaX7A6t%2F7CzEYIrZ6w4oS1SWlgKRS0%2Fimg.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            height: 95vh;
+            margin: 2vh 1vh 3vh 3vh;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .Firstgreeting {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            font-size: 50px;
+            font-weight: bold;
+
+            padding: 50px;
+        }
+
+        .SecondBox {
+            background-color: #FFF0D2;
+            display: block;
+            width: 100%;
+            height: 95vh;
+            margin: 2vh 1vh 3vh 3vh;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .UpperBox {
+            display: flex;
+            height: 45%;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 2vh;
+            margin-bottom: 0;
+        }
+
+        .firstPic {
+            background-image: url('https://i.pinimg.com/236x/3d/3c/5e/3d3c5e6fe2d0ed801236840a3080db04.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 30%;
+            height: 100%;
+            border-radius: 8px;
+            display: inline-block;
+            margin-right: 10vh;
+            margin: 2vh;
+        }
+
+        .container {
+            background-color: #D7A48A;
+            width: 40vw;
+            height: 100%;
+            border-radius: 8px;
+            display: inline-block;
+            margin-right: 2vh;
+        }
+
+        .myInfo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #F5F5DC;
+            font-size: 3vh;
+            font-weight: bold;
+        }
+
+        .info-box {
+            padding: 1vh;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .minInfoBoxes {
+            background-color: #F5F5DC;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+            border-radius: 10px;
+        }
+
+        .info-item {
+            font-size: 3vh;
+            margin: 5px 0;
+        }
+
+        .greetingBox {
+            background-color: #F5F5DC;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 90%;
+            height: 35%;
+            margin: 2vh 3vh 1vh 3vh;
+            border-radius: 10px;
+            font-size: 2vh;
+        }
+
+        .LowerBox {
+            display: block;
+            width: 100%;
+            height: 45%;
+            align-items: center;
+            margin: 2vh auto 0;
+        }
+
+        .firstIntroBox {
+            width: 96%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin: auto;
+            padding: 2%;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .firstIntro {
+            margin: 1% 0 0 1%;
+
+        }
+
+        .greeting {
+            font-size: 1.2em;
+            margin-left: 20px;
+            margin-right: 20px;
+            color: #555555;
+        }
+
+        .ThirdBox {
+            position: relative;
+            background-color: #FFF0D2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 95vh;
+            margin: 2vh 1vh 3vh 3vh;
+            padding: 2vh;
+            box-sizing: border-box;
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 3vh;
+            color: black;
+            margin-bottom: 3vh;
+        }
+
+        .scattered-images {
+
+            width: 80vw;
+            height: 80vh;
+            position: relative;
+        }
+
+        .card {
+            width: auto;
+            height: auto;
+            max-width: 20vw;
+            max-height: 35vh;
+            overflow: hidden;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .card:hover {
+            transform: translate(-50%, -60%) translateY(-10px);
+            box-shadow: 0 2vh 5vh rgba(0, 0, 0, 0.3);
+        }
+
+        .scattered-images .card1,
+        .scattered-images .card2,
+        .scattered-images .card3,
+        .scattered-images .card4 {
+            width: 18vh;
+            height: 18vh;
+            position: absolute;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .card1 {
+            top: 10%;
+            left: 5%;
+            transform: rotate(-10deg);
+        }
+
+        .card2 {
+            top: 10%;
+            right: 10%;
+            transform: rotate(8deg);
+        }
+
+        .card3 {
+            bottom: 15%;
+            left: 8%;
+            transform: rotate(-5deg);
+        }
+
+        .card4 {
+            bottom: 20%;
+            right: 12%;
+            transform: rotate(12deg);
+        }
+
+        .ForthBox {
+            background-color: #FFF0D2;
+            display: block;
+            width: 100%;
+            height: 95vh;
+            margin: 2vh 1vh 3vh 3vh;
+            padding: 2vh;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .PNF {
+            font-size: 5vh;
+            margin-bottom: 2vh;
+            text-align: center;
+        }
+
+        .container2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .section {
+            width: 100%;
+        }
+
+        .section h2 {
+            font-size: 3vh;
+            text-align: left;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: "";
+            display: block;
+            width: 30%;
+            height: 0.3vh;
+            background: black;
+        }
+
+        .SecondForth {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            padding-top: 2vh;
+        }
+
+        .ForthForth {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            padding-top: 2vh;
+        }
+
+        .box {
+            aspect-ratio: 2 / 3;
+            max-height: 30vh;
+            width: 28vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 1vh;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid white;
+            border-radius: 10px;
+            padding: 1vh;
+        }
+
+        .box img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 75%;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 1vh;
+        }
+
+        .description {
+            padding: 1vh;
+            font-size: 1.5vh;
+            color: black;
+            text-align: center;
+        }
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- jQuery 라이브러리 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+
+    <!-- Chart.js 라이브러리 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore, collection, doc, updateDoc, getDoc, setDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+        // Firebase 구성 초기화
+        const firebaseConfig = {
+            apiKey: "AIzaSyAtHlJLsyoZ4__m1-eXMaBBvpJNeJD74js",
+            authDomain: "sprta-f3322.firebaseapp.com",
+            projectId: "sprta-f3322",
+            storageBucket: "sprta-f3322.firebasestorage.app",
+            messagingSenderId: "56818984443",
+            appId: "1:56818984443:web:fc1b3289fa5e6e969a575e",
+            measurementId: "G-WZLQRD938T"
+        };
+
+        // Firebase 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        $(document).ready(function () {
+            // 투표 버튼 클릭 이벤트 처리
+            $('#voteBtn').on('click', async function () {
+                const selectedValue = $('input[name="flexRadioDefault"]:checked').val();
+
+                if (selectedValue) {
+                    try {
+                        // Firestore에서 선택한 값에 해당하는 문서 참조
+                        const voteDocRef = doc(db, "votes", selectedValue);
+                        const voteDoc = await getDoc(voteDocRef);
+
+                        if (voteDoc.exists()) {
+                            // 기존 값이 있을 경우 업데이트
+                            const currentCount = voteDoc.data().count || 0;
+                            await updateDoc(voteDocRef, { count: currentCount + 1 });
+                        } else {
+                            // 새로운 값 추가
+                            await setDoc(voteDocRef, { count: 1 });
+                        }
+
+                        alert('투표가 완료되었습니다!');
+                    } catch (error) {
+                        console.error('투표 중 오류 발생:', error);
+                    }
+                } else {
+                    alert('선택된 항목이 없습니다.');
+                }
+            });
+
+            // 결과 보기 버튼 클릭 이벤트 처리
+            $('#showResultsBtn').on('click', async function () {
+                try {
+                    // Firestore에서 votes 컬렉션의 모든 문서 가져오기
+                    const querySnapshot = await getDocs(collection(db, "votes"));
+                    const votesData = {};
+
+                    // 가져온 데이터를 votesData 객체에 저장
+                    querySnapshot.forEach((doc) => {
+                        votesData[doc.id] = doc.data().count;
+                    });
+
+                    // 차트 데이터를 생성
+                    const labels = Object.keys(votesData);
+                    const data = Object.values(votesData);
+
+                    // 기존의 차트를 제거하고 새로 생성
+                    $('#voteChart').remove(); // 기존 캔버스를 제거
+                    $('.graph').html('<canvas id="voteChart"></canvas>'); // 새로운 캔버스 추가
+
+                    // Chart.js를 이용하여 차트 그리기
+                    const ctx = document.getElementById('voteChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: '투표 결과',
+                                data: data,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                },
+                                title: {
+                                    display: true,
+                                    text: '투표 결과'
+                                }
+                            }
+                        }
+                    });
+
+                } catch (error) {
+                    console.error('결과를 가져오는 중 오류 발생:', error);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body class="MainBody">
+
+    <!-- 이동 버튼 -->
+    <div class="fixed-navigation">
+        <button class="nav-button" onclick="scrollToPosition('top')">
+            <img src="https://item.kakaocdn.net/do/aa2a6a2791f86d061f73829f00a1641126397d82c8691bdabf557d1536959d9c"
+                alt="Top Button">
+        </button>
+        <button class="nav-button" onclick="scrollToPosition('SecondBox')">
+            <img src="https://item.kakaocdn.net/do/aa2a6a2791f86d061f73829f00a1641126397d82c8691bdabf557d1536959d9c"
+                alt="Second Box Button">
+        </button>
+        <button class="nav-button" onclick="scrollToPosition('ThirdBox')">
+            <img src="https://item.kakaocdn.net/do/aa2a6a2791f86d061f73829f00a1641126397d82c8691bdabf557d1536959d9c"
+                alt="Third Box Button">
+        </button>
+        <button class="nav-button" onclick="scrollToPosition('ForthBox')">
+            <img src="https://item.kakaocdn.net/do/aa2a6a2791f86d061f73829f00a1641126397d82c8691bdabf557d1536959d9c"
+                alt="Forth Box Button">
+        </button>
+    </div>
+    <!-- 이동 버튼 -->
+
+    <div class="sideBox">
+        <h1 class="voteText">팥붕 VS 슈붕</h1>
+        <div class="graph">
+            <!-- 그래프가 여기에 렌더링됨 (기본적으로 빈칸) -->
+            <span>결과 없음</span>
+        </div>
+        <div class="votes">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="팥붕">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    팥붕
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="슈붕"
+                    checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    슈붕
+                </label>
+            </div>
+        </div>
+        <div class="buttons">
+            <button type="button1" class="btn btn-outline-dark" id="voteBtn">vote</button>
+            <button type="button2" class="btn btn-outline-primary" id="showResultsBtn">show</button>
+        </div>
+    </div>
+
+    <div class="FirstBox">
+        <div class="Firstgreeting">
+            Welcome, everyone!
+        </div>
+    </div>
+
+    <div class="SecondBox">
+
+        <div class="UpperBox">
+            <div class="firstPic">
+
+            </div>
+
+            <div class="container">
+                <h1 class="myInfo">나의 정보</h1>
+                <div class="info-box">
+                    <div class="minInfoBoxes">
+                        <div class="info-item">이름: 이승찬</div>
+                    </div>
+                    <div class="minInfoBoxes">
+                        <div class="info-item">MBTI: ISFJ</div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="minInfoBoxes">
+                        <div class="info-item">혈액형: A형</div>
+                    </div>
+                    <div class="minInfoBoxes">
+                        <div class="info-item">나이 : 26살</div>
+                    </div>
+                </div>
+
+                <div class="greetingBox">
+                    <p class="greeting">낯가리는 성격이지만 사람들과 같이 지내는 걸 좋아합니다! 먼저 다가와주시면 도망가지 않고 어울릴 수 있습니다! 캠프 진행하는 동안 다들 잘
+                        지내봐요 ㅎㅎ 잘
+                        부탁드립니다~!!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="LowerBox">
+            <div class="firstIntroBox">
+                <div class="firstIntro" style="font-size: 25px;">비전공자로 시작해서 아직 아는 것이 많이 없지만 모든 것을 쉽게쉽게 받아들이는 편입니다! 둥글둥글하지만 약간은 소심한 성격으로 제가 먼저
+                    다가가는 건 잘 못하지만.. 혼자 갈지말지 고민하고 있는 저를 보시면 언제든 다가와주세요 :)
+                    캠프 진행하는 동안 열심히 배우고 노력해서 제가 담당한 부분은 확실하게 책임지는 팀원이 되겠습니다!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ThirdBox">
+        <h1 class="title">My hobbies</h1>
+
+        <div class="scattered-images">
+            <div class="card">
+                <img src="https://item.kakaocdn.net/do/59e8ba8bb70984483fba1a20f27cf02fce9463e040a07a9462a54df43e1d73f1"
+                    alt="중앙 이미지">
+            </div>
+            <img src="https://static.news.zumst.com/images/27/2020/08/19/b86abff880974379b8ff1517cb9ab1cf.jpg"
+                alt="이미지 1" class="card1">
+            <img src="https://item.kakaocdn.net/do/2bb402963b0c015f0599d54700bd3461f43ad912ad8dd55b04db6a64cddaf76d"
+                alt="이미지 2" class="card2">
+            <img src="https://photo.coolenjoy.co.kr/data/editor/2204/thumb-0a8302e34b2cea32a7d26d3b914ad897d1bf882a.png"
+                alt="이미지 3" class="card3">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtruTfvnRZM-t8VmSdF_R9fTyxYXpEvycEYA&s"
+                alt="이미지 4" class="card4">
+        </div>
+    </div>
+
+    <div class="ForthBox">
+        <h1 class="PNF">Past & Future</h1>
+        <div class="container2">
+            <div class="sidebar">
+                <div class="section">
+                    <div class="firstForth">
+                        <h2>Past</h2>
+                    </div>
+
+                    <div class="SecondForth">
+                        <div class="box">
+                            <img src="https://media.istockphoto.com/id/469234234/ko/%EB%B2%A1%ED%84%B0/%EC%B9%A0%ED%8C%90-%EB%94%94%EC%9E%90%EC%9D%B8-%EC%9A%94%EC%86%8C%EB%A5%BC.jpg?s=612x612&w=0&k=20&c=0q9ma_oHirWaeC0FZspixfAEid3P84sSJOZyAVK83Xw="
+                                alt="Past Image 1">
+                            <div class="description">대학교에서 열심히 공부했습니다.</div>
+                        </div>
+                        <div class="box">
+                            <img src="https://cdn.econovill.com/news/photo/202105/531075_439468_4959.jpg"
+                                alt="Past Image 2">
+                            <div class="description">친구들과 같이 열심히 게임했습니다.</div>
+                        </div>
+                        <div class="box">
+                            <img src="https://cdn.telltrip.com/news/photo/202406/1801_9885_494.jpg" alt="Past Image 3">
+                            <div class="description">친구들과 국내 이곳저곳 여행을 다녔습니다.</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="section">
+                    <div class="ThirdForth">
+                        <h2>Future</h2>
+                    </div>
+
+                    <div class="ForthForth">
+                        <div class="box">
+                            <img src="https://ilovegangwon.com/data/file/humor/15827113263118.gif" alt="Future Image 1">
+                            <div class="description">맡은 역할은 확실하게 해내는 책임감 있는 개발자가 되고 싶어요!!</div>
+                        </div>
+                        <div class="box">
+                            <img src="https://i.pinimg.com/736x/36/52/57/36525799d3c4437f0fc9d33f79fe0108.jpg"
+                                alt="Future Image 2">
+                            <div class="description">취업도 성공하고 연애도 할 수 있으면 좋겠네요!!</div>
+                        </div>
+                        <div class="box">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSF47wqsidCX03_4tbYKljNlnYgzXHz0Z59A&s"
+                                alt="Future Image 3">
+                            <div class="description">운동을 꾸준하게 해서 만족할 수 있는 몸을 만들고 싶습니다 :)</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box contact-box">
+        <div class="content" style="width: 18rem;">
+            <div class="card-body">
+                <p class="content-text" style="text-align: center;">더 많은 정보는~</p>
+                <div class="contactButtons">
+                    <button>
+                        <a href="https://carrot0911.tistory.com/" class="content-button1" role="button"
+                            aria-disabled="true" style="text-decoration: none;">Blog</a>
+                    </button>
+                    <button>
+                        <a href="https://github.com/tmdcksdl" class="content-button2" role="button"
+                            aria-disabled="true" style="text-decoration: none;">Github</a>
+                    </button>
+                    <button>
+                        <a href="https://www.instagram.com/chan_09_11/" class="content-button3" role="button"
+                            aria-disabled="true" style="text-decoration: none;">Insta</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 이동버튼 스크립트 -->
+    <script>
+        function scrollToPosition(targetId) {
+            if (targetId === 'top') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                const targetElement = document.getElementsByClassName(targetId)[0];
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        }
+    </script>
+    <!-- 이동버튼 스크립트 -->
+</body>
+
+</html>

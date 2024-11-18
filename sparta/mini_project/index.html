@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>래프트(FROM GARBAGE)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Hi+Melody&family=Jua&family=Poor+Story&family=Rubik:wght@300&display=swap');
+
+        /* 시작 */
+        * {
+            font-family: "Hi Melody", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            cursor: url("https://github.com/Lustella-123/Lustella-123/blob/main/claw-2027511_960_720.png?raw=true") 0 16, wait;
+        }
+
+        .wave {
+            position: absolute;
+            width: 100%;
+            top: -200px;
+            left: 0;
+            z-index: -1;
+            transition: top 5s ease;
+        }
+
+        /* 제목 */
+        .h1 {
+            font-size: 4rem;
+            margin: 1em;
+            text-align: center;
+        }
+
+        /* 제목 */
+
+        /* 시계 */
+        .clock {
+
+            width: 60%;
+            margin: 0px auto;
+            text-align: right;
+            font-size: 3em;
+            color: #333;
+        }
+
+        /* 시계 */
+
+        /* 네비게이션바 */
+        .nav {
+            border-top: solid 1px #0077b6;
+            border-bottom: solid 1px #0077b6;
+            display: flex;
+            justify-content: center;
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        .nav_ul {
+            text-align: center;
+            display: flex;
+        }
+
+        .nav-ul li {
+            font-size: 1.5rem;
+            display: inline;
+            text-align: center;
+            flex-grow: 1;
+            padding: 0 2rem;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.5s cubic-bezier(.25, .8, .25, 1);
+        }
+
+        .nav-ul p {
+            font-size: 1rem;
+            display: inline;
+            text-align: center;
+            flex-grow: 1;
+            padding: 0 2rem;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.5s cubic-bezier(.25, .8, .25, 1);
+        }
+
+        .SMN_effect-14 {
+            position: relative;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .SMN_effect-14:before {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            color: transparent;
+            content: '•';
+            text-shadow: 0 0 transparent;
+            font-size: 13pt;
+            transition: text-shadow 0.3s, color 0.3s;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        .SMN_effect-14:hover:before,
+        .SMN_effect-14:focus:before {
+            color: #000;
+            text-shadow: 10px 0 #000, -10px 0 #000;
+        }
+
+        .SMN_effect-14:hover,
+        .SMN_effect-14:focus {
+            color: white;
+        }
+
+        #loginStatusIcon {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 5px;
+            vertical-align: middle;
+            /* 아이콘을 텍스트와 수직 정렬 */
+        }
+
+        /* 네비게이션바 */
+
+        /* 팀소개 */
+        .팀소개 {
+            background-color: #90e0ef;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 60%;
+            padding: 1rem;
+            margin: 5rem auto;
+            border-radius: 10px;
+        }
+
+        .raft {
+            display: flex;
+            width: 100%;
+        }
+
+        /* 팀소개 */
+
+        /* 팀내용 */
+        .팀내용 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 65%;
+            margin: 5rem auto;
+        }
+
+        .팀카드 {
+            background-color: #caf0f8;
+            font-size: 1.1rem;
+            width: 30%;
+            padding: 1.5rem;
+            height: auto;
+            margin: 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .팀카드:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .팀카드 h3 {
+            font-size: 1.3rem;
+            color: #0077b6;
+            margin-bottom: 0.8rem;
+        }
+
+        .팀카드 ul {
+            list-style-type: disc;
+            padding-left: 1.2rem;
+        }
+
+        .팀카드 li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* 팀내용 */
+
+        /* 멤버내용 */
+        .멤버 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 80%;
+            margin: 0rem auto;
+        }
+
+        .멤버카드 {
+            background-color: #ade8f4;
+            font-size: 1rem;
+            width: 20%;
+            padding: 10px;
+            height: auto;
+            margin: 1rem;
+        }
+
+        .멤버카드 p {
+            margin: 0;
+        }
+
+        .team {
+            width: 1200px;
+
+            margin: 20px auto 20px auto;
+        }
+
+        .col-ru {
+            position: fixed;
+            top: 300px;
+            left: 10px;
+            width: 300px;
+            padding: 0.5rem;
+            border-radius: 5px;
+            z-index: 1000;
+            overflow: hidden;
+            display: none;
+        }
+
+        .col-ru img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        /* 멤버내용 */
+
+        /* 방명록 */
+        .guestbook {
+            width: 1000px;
+            background-color: #ade8f4;
+            margin: 70px auto;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .guestbookcard {
+            width: 1000px;
+            border-radius: 15px;
+            background-color: #ade8f4;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 20px auto;
+        }
+
+        /* 방명록 */
+
+        /* 날씨위젯 */
+        #weather-widget {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 1rem;
+            border: 1px solid #0077b6;
+            background-color: #ffffff;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        /* 날씨위젯 */
+
+        /* 맨 위로 가기 버튼 */
+        #topButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 12px;
+            padding: 10px;
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+
+        /* 맨 위로 가기 버튼 */
+
+        /* 오디오 제어 버튼 스타일 */
+        #musicToggleButton {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+
+// Firebase 설정
+const firebaseConfig = {
+    apiKey: "AIzaSyAtHlJLsyoZ4__m1-eXMaBBvpJNeJD74js",
+    authDomain: "sprta-f3322.firebaseapp.com",
+    projectId: "sprta-f3322",
+    storageBucket: "sprta-f3322.firebasestorage.app",
+    messagingSenderId: "56818984443",
+    appId: "1:56818984443:web:fc1b3289fa5e6e969a575e",
+    measurementId: "G-WZLQRD938T"
+};
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    // 로그인 상태에 따른 버튼 및 아이콘 설정
+    document.addEventListener("DOMContentLoaded", function () {
+        const loginButton = document.getElementById("goLogin");
+        const loginIcon = document.createElement("span");
+
+        loginIcon.id = "loginStatusIcon";
+        loginIcon.style.width = "10px";
+        loginIcon.style.height = "10px";
+        loginIcon.style.borderRadius = "50%";
+        loginIcon.style.marginLeft = "5px";
+        loginIcon.style.display = "inline-block";
+        loginIcon.style.verticalAlign = "middle";
+        loginButton.appendChild(loginIcon);
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loginButton.textContent = "로그아웃"; // 로그인 상태일 때 버튼 텍스트 변경
+                loginButton.appendChild(loginIcon);
+                loginIcon.style.backgroundColor = "green"; // 로그인 상태 - 초록색 아이콘
+
+                // 로그아웃 기능 추가
+                loginButton.onclick = () => {
+                    signOut(auth)
+                        .then(() => {
+                            alert("로그아웃되었습니다.");
+                            window.location.reload(); // 페이지 새로고침하여 상태 업데이트
+                        })
+                        .catch((error) => {
+                            console.error("로그아웃 중 오류가 발생했습니다: ", error);
+                        });
+                };
+            } else {
+                loginButton.textContent = "로그인하기"; // 비로그인 상태일 때 버튼 텍스트 변경
+                loginButton.appendChild(loginIcon);
+                loginIcon.style.backgroundColor = "red"; // 비로그인 상태 - 빨간색 아이콘
+
+                // 로그인 페이지로 이동
+                loginButton.onclick = () => {
+                    window.location.href = "login.html";
+                };
+            }
+
+            // 로그인 여부에 따라 방명록의 수정 및 삭제 버튼 비활성화 설정
+            loadGuestbook(user !== null); // 로그인 상태를 전달하여 버튼 상태 설정
+        });
+    });
+
+    // 방명록 불러오기
+    async function loadGuestbook(isLoggedIn) {
+        try {
+            $('#card').empty();  // 기존 데이터를 초기화하여 중복 방지
+            let docs = await getDocs(collection(db, "guestbook"));
+            docs.forEach((doc) => {
+                let row = doc.data();
+                let id = doc.id;
+                let name = row['name'];
+                let content = row['content'];
+
+                // isLoggedIn이 false일 경우 수정 및 삭제 버튼을 비활성화
+                let temp_html = `
+                <div class="guestbookcard" id="guestbook-${id}">
+                    <div class="card-body">
+                        <h3>${name}</h3>
+                        <p>${content}</p>
+                        <button type="button" class="btn btn-outline-primary edit-btn" data-id="${id}" ${!isLoggedIn ? 'disabled' : ''}>수정</button>
+                        <button type="button" class="btn btn-outline-danger delete-btn" data-id="${id}" ${!isLoggedIn ? 'disabled' : ''}>삭제</button>
+                    </div>
+                </div>`;
+
+                $('#card').append(temp_html);
+            });
+        } catch (error) {
+            console.error("방명록을 가져오는 중 오류가 발생했습니다: ", error);
+        }
+    }
+
+    // 방명록 저장하기 클릭 이벤트
+    $(document).on("click", "#guestbookbtn", async function () {
+        const user = auth.currentUser; // 현재 로그인 상태 확인
+
+        if (!user) {
+            alert("로그인이 필요합니다."); // 비로그인 상태일 경우 알림 표시
+            return;
+        }
+
+        // 로그인 상태일 때 방명록 저장
+        let name = $('#exampleFormControlInput1').val();
+        let content = $('#exampleFormControlTextarea1').val();
+
+        if (name && content) {
+            let docData = {
+                'name': name,
+                'content': content
+            };
+            try {
+                await addDoc(collection(db, "guestbook"), docData);
+                alert('방명록이 저장되었습니다!');
+
+                // 방명록 로드 및 입력 필드 초기화
+                loadGuestbook(true); // 로그인된 상태로 방명록을 다시 로드
+                $('#exampleFormControlInput1').val(''); // 이름 입력 필드 초기화
+                $('#exampleFormControlTextarea1').val(''); // 내용 입력 필드 초기화
+            } catch (error) {
+                console.error("방명록 저장 중 오류가 발생했습니다: ", error);
+            }
+        } else {
+            alert('이름과 내용을 모두 입력해주세요.');
+        }
+    });
+
+    // 방명록 삭제 기능
+    $(document).on("click", ".delete-btn", async function () {
+        let id = $(this).data("id");
+        try {
+            await deleteDoc(doc(db, "guestbook", id));
+            alert('방명록이 삭제되었습니다.');
+            $(`#guestbook-${id}`).remove();
+        } catch (error) {
+            console.error("방명록 삭제 중 오류가 발생했습니다: ", error);
+        }
+    });
+
+    // 방명록 수정 기능
+    $(document).on("click", ".edit-btn", async function () {
+        let id = $(this).data("id");
+        let docRef = doc(db, "guestbook", id);
+        try {
+            let docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                let row = docSnap.data();
+                let currentName = row['name'];
+                let currentContent = row['content'];
+                let newName = prompt("이름을 수정하세요:", currentName);
+                let newContent = prompt("내용을 수정하세요:", currentContent);
+                if (newName && newContent) {
+                    await updateDoc(docRef, {
+                        name: newName,
+                        content: newContent
+                    });
+                    alert('방명록이 수정되었습니다.');
+                    loadGuestbook(true);  // 수정 후 데이터 다시 로드하여 업데이트
+                }
+            } else {
+                alert("문서를 찾을 수 없습니다.");
+            }
+        } catch (error) {
+            console.error("방명록 수정 중 오류가 발생했습니다: ", error);
+        }
+    });
+
+        // 시간 불러오는 기능
+        function updateTime() {
+            const timeElement = document.getElementById("time");
+            const now = new Date(); // 현재 시간을 가져옵니다.
+
+            // 시간을 형식에 맞게 가져오기
+            const hours = String(now.getHours()).padStart(2, "0"); // 시
+            const minutes = String(now.getMinutes()).padStart(2, "0"); // 분
+            const seconds = String(now.getSeconds()).padStart(2, "0"); // 초
+
+            // 시간을 문자열로 조합
+            timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // 1초마다 시간을 업데이트
+        setInterval(updateTime, 1000);
+
+        // 페이지가 로드될 때 즉시 시간을 표시하기 위해 초기 호출
+        updateTime();
+
+        // 일기예보
+// 위치 정보를 받아 기상청 API에 사용할 수 있도록 완전한 코드로 만들어드리겠습니다.
+// 기상청의 nx, ny 좌표계로 변환하기 위해서는 TM 좌표계 변환이 필요합니다.
+// 이 코드는 위도, 경도를 기상청에서 사용하는 좌표계로 변환하는 로직을 포함하고 있습니다.
+
+// 좌표 변환을 위해 필요한 상수 정의
+const RE = 6371.00877; // 지구 반경(km)
+const GRID = 5.0; // 격자 간격(km)
+const SLAT1 = 30.0; // 투영 위도1(degree)
+const SLAT2 = 60.0; // 투영 위도2(degree)
+const OLON = 126.0; // 기준점 경도(degree)
+const OLAT = 38.0; // 기준점 위도(degree)
+const XO = 43; // 기준점 X좌표(GRID)
+const YO = 136; // 기준점 Y좌표(GRID)
+
+const DEGRAD = Math.PI / 180.0;
+const RADDEG = 180.0 / Math.PI;
+
+const re = RE / GRID;
+const slat1 = SLAT1 * DEGRAD;
+const slat2 = SLAT2 * DEGRAD;
+const olon = OLON * DEGRAD;
+const olat = OLAT * DEGRAD;
+
+let sn = Math.tan(Math.PI * 0.25 + slat2 * 0.5) / Math.tan(Math.PI * 0.25 + slat1 * 0.5);
+sn = Math.log(Math.cos(slat1) / Math.cos(slat2)) / Math.log(sn);
+let sf = Math.tan(Math.PI * 0.25 + slat1 * 0.5);
+sf = Math.pow(sf, sn) * Math.cos(slat1) / sn;
+let ro = Math.tan(Math.PI * 0.25 + olat * 0.5);
+ro = re * sf / Math.pow(ro, sn);
+
+function convertCoords(lat, lon) {
+    let ra = Math.tan(Math.PI * 0.25 + lat * DEGRAD * 0.5);
+    ra = re * sf / Math.pow(ra, sn);
+    let theta = lon * DEGRAD - olon;
+    if (theta > Math.PI) theta -= 2.0 * Math.PI;
+    if (theta < -Math.PI) theta += 2.0 * Math.PI;
+    theta *= sn;
+
+    const nx = Math.floor(ra * Math.sin(theta) + XO + 0.5);
+    const ny = Math.floor(ro - ra * Math.cos(theta) + YO + 0.5);
+
+    return { nx, ny };
+}
+
+if (localStorage.getItem('userPosition')) {
+    const position = JSON.parse(localStorage.getItem('userPosition'));
+    fetchWeatherData(position.nx, position.ny);
+} else {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            const { latitude, longitude } = position.coords;
+            
+            // 위도와 경도를 기상청 API에서 사용하는 nx, ny 값으로 변환
+            const { nx, ny } = convertCoords(latitude, longitude);
+            
+            // 변환된 값을 localStorage에 저장
+            localStorage.setItem('userPosition', JSON.stringify({ nx, ny }));
+            
+            // 날씨 데이터 가져오기
+            fetchWeatherData(nx, ny);
+        }, error => {
+            console.error("위치 정보를 가져오는 중 오류 발생: ", error);
+        });
+    } else {
+        console.log("사용자의 위치 정보를 가져올 수 없습니다.");
+    }
+}
+
+async function fetchWeatherData(nx, ny) {
+    const apiKey = 'YwQtuITGE24Cty%2BKIF1TkmtNgWiuGUKTCSB8cmqMKSDMRt8r8iq3wNheCCK5rUaTua8gArWcX4ZvS9dIq%2B%2FxiA%3D%3D'; // 본인의 서비스 키를 입력하세요.
+    const { date: baseDate, time: baseTime } = getCurrentDateTime();
+    const url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${apiKey}&numOfRows=1000&pageNo=1&dataType=JSON&base_date=${baseDate}&base_time=${baseTime}&nx=${nx}&ny=${ny}`;
+
+    try {
+        const response = await fetch(url);
+
+        // 네트워크 관련 오류나 응답이 200이 아닌 경우 처리
+        if (!response.ok) {
+            throw new Error(`HTTP 오류 발생: 상태 코드 ${response.status}`);
+        }
+
+        let data;
+        try {
+            // JSON 파싱 시도
+            data = await response.json();
+        } catch (jsonError) {
+            // JSON 파싱 오류 처리
+            throw new Error("JSON 데이터를 파싱하는 중 오류가 발생했습니다. 올바른 형식의 데이터인지 확인하세요.");
+        }
+
+        // API 응답 코드 확인
+        if (data.response && data.response.header && data.response.header.resultCode !== "00") {
+            throw new Error(`API 응답 오류: ${data.response.header.resultMsg}`);
+        }
+
+        // 날씨 데이터가 올바르게 반환된 경우
+        if (data.response && data.response.body && data.response.body.items && data.response.body.items.item) {
+            displayForecast(data.response.body.items.item);
+        } else {
+            throw new Error("예상치 못한 데이터 구조가 반환되었습니다. API 응답의 body나 items 항목을 확인하세요.");
+        }
+
+    } catch (error) {
+        // 네트워크 오류, HTTP 상태 오류, JSON 파싱 오류, API 응답 오류 모두 처리
+        console.error("날씨 데이터를 가져오는 중 오류 발생: ", error);
+
+        // 사용자에게 오류 메시지 표시
+        alert("날씨 데이터를 가져오는 중 오류가 발생했습니다. 네트워크 상태나 API 키를 확인해주세요.");
+    }
+}
+
+
+function getCurrentDateTime() {
+    const date = new Date();
+    let year = date.getFullYear();
+    let month = String(date.getMonth() + 1).padStart(2, '0');
+    let day = String(date.getDate()).padStart(2, '0');
+    let hours = date.getHours();
+    const baseTimes = [2, 5, 8, 11, 14, 17, 20, 23];
+    let baseTime = baseTimes.reduce((prev, curr) => (curr <= hours ? curr : prev));
+    baseTime = String(baseTime).padStart(2, '0') + '00';
+    if (hours < 2) {
+        const prevDate = new Date(date.getTime() - 86400000); // 하루 전 날짜
+        year = prevDate.getFullYear();
+        month = String(prevDate.getMonth() + 1).padStart(2, '0');
+        day = String(prevDate.getDate()).padStart(2, '0');
+        baseTime = "2300";
+    }
+    return {
+        date: `${year}${month}${day}`,
+        time: baseTime
+    };
+}
+
+function displayForecast(items) {
+    const forecastContainer = document.getElementById("forecast");
+    forecastContainer.innerHTML = "";
+    const categoryMap = {
+        "TMP": "기온",
+        "WSD": "풍속",
+        "POP": "강수확률",
+        "SKY": "하늘 상태",
+        "PTY": "강수 형태"
+    };
+
+    const forecastData = {
+        "TMP": null,
+        "WSD": null,
+        "POP": null,
+        "SKY": null,
+        "PTY": null
+    };
+
+    // 필요한 항목만 필터링하여 forecastData에 저장
+    items.forEach(item => {
+        if (item.category in forecastData) {
+            forecastData[item.category] = item.fcstValue;
+        }
+    });
+
+    // 필요한 항목만 화면에 표시
+    Object.keys(forecastData).forEach(category => {
+        const fcstValue = forecastData[category];
+        if (fcstValue !== null) {
+            let displayText = "";
+            switch (category) {
+                case "TMP":
+                    displayText = `${categoryMap[category]} - ${fcstValue}℃`;
+                    break;
+                case "WSD":
+                    displayText = `${categoryMap[category]} - ${fcstValue}m/s`;
+                    break;
+                case "POP":
+                    displayText = `${categoryMap[category]} - ${fcstValue}%`;
+                    break;
+                case "SKY":
+                    const skyStatus = {
+                        "1": "맑음",
+                        "3": "구름 많음",
+                        "4": "흐림"
+                    };
+                    displayText = `${categoryMap[category]} - ${skyStatus[fcstValue] || "알 수 없음"}`;
+                    break;
+                case "PTY":
+                    const ptyStatus = {
+                        "0": "없음",
+                        "1": "비",
+                        "2": "비/눈",
+                        "3": "눈",
+                        "4": "소나기"
+                    };
+                    displayText = `${categoryMap[category]} - ${ptyStatus[fcstValue] || "알 수 없음"}`;
+                    break;
+            }
+            const forecastElement = document.createElement("p");
+            forecastElement.textContent = displayText;
+            forecastContainer.appendChild(forecastElement);
+        }
+    });
+}
+        // 일기예보
+
+        // 네비바이동
+        document.getElementById("teamIntro").addEventListener("click", function () {
+            document.getElementById("팀소개").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+
+        document.getElementById("teamContent").addEventListener("click", function () {
+            document.getElementById("팀내용").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+
+        document.getElementById("teamMembers").addEventListener("click", function () {
+            document.getElementById("멤버").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+
+        // 방명록이 아직 없으므로 alert를 추가해놓음
+        document.getElementById("guestbook").addEventListener("click", function () {
+            document.getElementById("방명록").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+
+        document.getElementById("goLogin").addEventListener("click", function () {
+            // 로그인 페이지로 이동하도록 설정
+            window.location.href = "login.html";
+        });
+
+
+        
+    </script>
+</head>
+
+<body>
+    <!-- 제목 및 네비게이션바 -->
+    <h1 class="h1">래프트(from garbage)</h1>
+
+    <!-- 오디오 추가 -->
+    <audio id="backgroundMusic" loop>
+        <source src="꽃보다남자 ost.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- 음악 제어 버튼 -->
+    <button id="musicToggleButton">음악 재생</button>
+
+        <script>
+            // 음악 제어 버튼 클릭 이벤트 처리
+            document.getElementById("musicToggleButton").addEventListener("click", function () {
+                const audioElement = document.getElementById("backgroundMusic");
+                const button = document.getElementById("musicToggleButton");
+    
+                if (audioElement.paused) {
+                    // 음악이 일시 중지된 상태 -> 재생
+                    audioElement.play()
+                        .then(() => {
+                            button.textContent = "음악 정지";
+                        })
+                        .catch((error) => {
+                            console.error("Error playing music:", error);
+                        });
+                } else {
+                    // 음악이 재생 중인 상태 -> 정지
+                    audioElement.pause();
+                    button.textContent = "음악 재생";
+                }
+            });
+        </script>
+
+<script>
+    document.getElementById("startMusicButton").addEventListener("click", function() {
+        const audioElement = document.getElementById("backgroundMusic");
+        audioElement.play()
+            .then(() => {
+                console.log("Music is playing.");
+            })
+            .catch((error) => {
+                console.error("Error playing music:", error);
+            });
+    });
+</script>
+  
+    
+    <!-- 시간 -->
+    <div class="clock">
+        <h4 id="time"></h4>
+    </div>
+
+    <!-- 네비게이션바 -->
+    <nav class="nav">
+        <ul class="nav-ul">
+            <li id="teamIntro" class="SMN_effect-14">팀 소개</li>
+            <li id="teamContent" class="SMN_effect-14">팀 내용</li>
+            <li id="teamMembers" class="SMN_effect-14">멤버</li>
+            <li id="guestbook" class="SMN_effect-14">방명록</li>
+            <li id="goLogin" class="SMN_effect-14">로그인하기</li>
+        </ul>
+    </nav>
+
+    <!-- 파도 이미지 -->
+    <img id="waveImage" class="wave" src="https://github.com/Lustella-123/Lustella-123/blob/main/%ED%8C%8C%EB%8F%84modified.png?raw=true" alt="파도 이미지">
+
+    <script>
+        $(document).ready(function() {
+            // 페이지가 로드된 후 1초 후에 파도 이미지가 아래로 내려가는 애니메이션을 실행합니다.
+            setTimeout(function() {
+                $('#waveImage').css('top', '0');
+            }, 1000);
+        });
+    </script>
+
+    <!-- 일기예보 위젯 -->
+    <div class="shadow p-3 mb-5 bg-body-tertiary rounded" id="weather-widget">
+        <h4>단기예보</h4>
+        <div id="forecast"></div>
+    </div>
+
+    <!-- 팀소개 -->
+    <div class="팀소개" id="팀소개">
+        <div>
+            <h3>래프트(from garbage)</h3>
+            <p style="font-size: 20px;">게임을 취미로 하는 F4 남자의 좌충우돌 개발자 성장기를 공감해 주세요 T 여러분... <br>
+                비전공으로 시작해서 지금은 허름한 뗏목을 타고 있지만 프로그램 세상에 떠있는 정보들을 긁어모아 함선을 만들겠다는 포부로
+                레프트라는 팀 이름을 지었습니다.</p>
+        </div>
+        <div>
+            <img class="raft" src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/648800/header.jpg?t=1727184011" alt="Raft_steam">
+        </div>
+    </div>
+
+    <!-- 팀내용 -->
+    <div class="팀내용" id="팀내용">
+        <div class="팀카드">
+            <p>저희 팀의 목표는 <b>단순히 개발자로서의 지식을 쌓는 것에 그치지 않고, 실제로 활용 가능한 프로젝트를 완성하는 것</b>입니다.<br>
+                그 과정에서 배우고 성장하며, 각자의 장점과 역량을 결합해 협업의 중요성을 깨닫고, 문제 해결 능력을 키워가고 있습니다.<br>
+                비전공자라는 시작점에서 출발했지만, 그만큼 창의적이고 새로운 시각을 가지고 있으며, 끊임없이 발전하는 개발자가 되기 위해 노력하고 있습니다.<br>
+                <b>저희 팀은 앞으로도 개발자의 꿈을 현실로 만들어 가는 여정을 계속하며, 도전과 성취의 순간들을 함께 나누고자 합니다.</b>
+            </p>
+        </div>
+        <div class="팀카드">
+            <h2>Ground Rule</h2>
+            <ul>
+                <li>주 100시간 이상 코딩합니다</li>
+                <li>협업하고 도움을 주고 받으며 성장하세요</li>
+                <li>좋은 매너로 말합니다</li>
+                <li>나와 팀에 대해 최선을 다합니다</li>
+                <li>문제를 해결하는 과정을 즐깁니다</li>
+            </ul>
+        </div>
+        <div class="팀카드">
+            <h2>팀 스케쥴</h2>
+            <ul>
+                <li>9 : 00 - 출석 & 잠 깨기</li>
+                <li>9 : 30 - 데일리 스크럼</li>
+                <li>13 : 00 ~ 14 : 00 - 점심시간</li>
+                <li>18 : 00 ~ 19 : 00 - 저녁 시간</li>
+                <li>20 : 30 ~ 21 : 00 - 회고</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 멤버 -->
+    <div class="team" id="멤버">
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            <div class="col-ru" id="ruy">
+                <a class="card h-100 text-decoration-none">
+                    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZ6CVB%2FbtsKArkfCkN%2FrgX6PJPBASYgF29IsQiEXk%2Fimg.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">류원형</h5>
+                        <p class="card-text">코딩은 지피티로 하는게 아니야 마음으로 작성하는거지</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="PersonalPage/Card-HSW.html" class="card h-100 text-decoration-none">
+                    <img src="https://img2.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202105/25/cineplay/20210525045427711lmfw.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">한성우</h5>
+                        <p class="card-text">백앤드를 내 직업으로 공식적으로 발표하는 바이다</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="PersonalPage/Main-PJS.html" class="card h-100 text-decoration-none">
+                    <img src="https://pbs.twimg.com/profile_images/737671629895917568/GdPl88g0_400x400.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">박재성</h5>
+                        <p class="card-text">그럼 시켜줘, 스프링 명예소방관</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="PersonalPage/Main-BDH.html" class="card h-100 text-decoration-none">
+                    <img src="https://pbs.twimg.com/media/Eo_xO_IVEAUXELV.jpg:large" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">방동혁</h5>
+                        <p class="card-text">코드들은 수학 문제 같아.
+                            조금만 더 연구하고 관찰하면 해답이 다 있거든</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="PersonalPage/Main-LSC.html" class="card h-100 text-decoration-none">
+                    <img src="https://img2.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202105/25/cineplay/20210525045437357svpj.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">이승찬</h5>
+                        <p class="card-text">당신이... 코더 리..?<br>예아!</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 방명록 작성하기 -->
+    <div class="guestbook" id="방명록">
+        <h2>방명록 작성하기</h2>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">이름</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="이름">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">방명록 내용 적기</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="응원 한마디 적어주세요!!"></textarea>
+        </div>
+        <button type="button" class="btn btn-outline-dark" id="guestbookbtn">방명록 저장하기</button>
+    </div>
+
+    <!-- 방명록 카드 표시 -->
+    <div id="card"></div>
+
+
+    <!-- 맨 위로 가기 스크립트&버튼-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 스크롤 시 버튼 표시
+window.onscroll = function () {
+    const topButton = document.getElementById("topButton");
+    const ruy = document.getElementById("ruy");
+
+    // 첫 번째 조건: 스크롤 위치가 100 이상일 때 topButton 표시
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        topButton.style.display = "block";
+    } else {
+        topButton.style.display = "none";
+    }
+
+    // 두 번째 조건: 스크롤 위치가 700 이상일 때 ruy 표시
+    if (document.body.scrollTop > 700 || document.documentElement.scrollTop > 700) {
+        ruy.style.display = "block";
+    } else {
+        ruy.style.display = "none";
+    }
+            };
+            // 버튼 클릭 시 맨 위로 이동
+            document.getElementById("topButton").onclick = function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            };
+        });
+    </script>
+
+    <button id="topButton">Top <br>▲</button>
+    <!-- 맨 위로 가기 스크립트&버튼-->
+
+</body>
+
+</html>

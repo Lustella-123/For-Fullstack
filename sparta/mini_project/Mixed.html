@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .MainBody {
+            background-color: violet;
+            width: 97%;
+            height: 400vh;
+        }
+
+        .sideBox {
+            background-color: white;
+            width: 20vh;
+            height: 30vh;
+            top: 25vh;
+            right: 1vh;
+            position: fixed;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .voteText {
+            font-size: 2vh;
+            margin-bottom: 10px;
+        }
+
+        .graph {
+            width: 15vh;
+            height: 15vh;
+            background-color: #f0f0f0;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .votes {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .buttons {
+            justify-content: space-between;
+            margin-top: 2vh;
+        }
+
+        .button {
+            width: 40%;
+            height: 20%;
+        }
+
+        .contact-box {
+            position: fixed;
+            bottom: 2vh;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 10vh;
+            max-width: 10vw;
+            max-height: 10vh;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .content {
+            font-size: 2vh;
+            width: 100%;
+            height: 40%;
+            max-width: 100%;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-text {
+            margin-top: 1vh;
+            text-align: center;
+        }
+
+        .contactButtons {
+            display: flex;
+            gap: 1vh;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1vh;
+        }
+
+        .FirstBox {
+            background-color: lightpink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 95vh;
+            margin: 2vh 1vh 3vh 3vh;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .Firstgreeting {
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+
+        .SecondBox {
+            background-color: lightpink;
+            display: block;
+            width: 100%;
+            height: 95vh;
+            margin: 2vh 1vh 3vh 3vh;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .UpperBox {
+            display: flex;
+            height: 45%;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 2vh;
+            margin-bottom: 0;
+        }
+
+        .firstPic {
+            background-image: url('https://img.freepik.com/premium-photo/maltese-domestic-dog-puppy-running-across-meadow-rhinelandpalatinate_905081-313.jpg?semt=ais_hybrid');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 30%;
+            height: 100%;
+            border-radius: 8px;
+            display: inline-block;
+            margin-right: 10vh;
+            margin: 2vh;
+        }
+
+        .container {
+            background-image: url('https://media.istockphoto.com/id/1300107681/ko/%EC%82%AC%EC%A7%84/%EB%8C%80%EC%84%9C%EC%96%91-%EC%9D%98-%ED%91%9C%EB%A9%B4.jpg?s=612x612&w=0&k=20&c=p_vW3L_1A7moSNqHpavoW8EmmiiKOM4bwQM7rSvt5OY=');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            width: 40vw;
+            height: 100%;
+            border-radius: 8px;
+            display: inline-block;
+            margin-right: 2vh;
+        }
+
+        .myInfo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #FFD700;
+            font-size: 3vh;
+        }
+
+        .info-box {
+            padding: 1vh;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .minInfoBoxes {
+            background-color: #F5F5DC;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+            border-radius: 10px;
+        }
+
+        .info-item {
+            font-size: 3vh;
+            margin: 5px 0;
+        }
+
+        .greetingBox {
+            background-color: #F5F5DC;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 90%;
+            height: 35%;
+            margin: 2vh 3vh 1vh 3vh;
+            border-radius: 10px;
+            font-size: 2vh;
+        }
+
+        .LowerBox {
+            display: block;
+            width: 100%;
+            height: 45%;
+            align-items: center;
+            margin: 2vh auto 0;
+        }
+
+        .firstIntroBox {
+            width: 96%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin: auto;
+            padding: 2%;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .firstIntro {
+            margin: 1% 0 0 1%;
+
+        }
+
+        .greeting {
+            font-size: 1.2em;
+            margin-left: 20px;
+            margin-right: 20px;
+            color: #555555;
+        }
+
+        .ThirdBox {
+            position: relative;
+            background-color: lightpink;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 95vh;
+            margin: 2vh 1vh 3vh 3vh;
+            padding: 2vh;
+            box-sizing: border-box;
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 3vh;
+            color: black;
+            margin-bottom: 3vh;
+        }
+
+        .scattered-images {
+
+            width: 80vw;
+            height: 80vh;
+            position: relative;
+        }
+
+        .card {
+            width: auto;
+            height: auto;
+            max-width: 20vw;
+            max-height: 35vh;
+            overflow: hidden;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .card:hover {
+            transform: translate(-50%, -60%) translateY(-10px);
+            box-shadow: 0 2vh 5vh rgba(0, 0, 0, 0.3);
+        }
+
+        .scattered-images .card1,
+        .scattered-images .card2,
+        .scattered-images .card3,
+        .scattered-images .card4 {
+            width: 18vh;
+            height: 18vh;
+            position: absolute;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .card1 {
+            top: 10%;
+            left: 5%;
+            transform: rotate(-10deg);
+        }
+
+        .card2 {
+            top: 10%;
+            right: 10%;
+            transform: rotate(8deg);
+        }
+
+        .card3 {
+            bottom: 15%;
+            left: 8%;
+            transform: rotate(-5deg);
+        }
+
+        .card4 {
+            bottom: 20%;
+            right: 12%;
+            transform: rotate(12deg);
+        }
+
+        .ForthBox {
+            background-color: lightpink;
+            display: block;
+            width: 100%;
+            height: 95vh;
+            margin: 2vh 1vh 3vh 3vh;
+            padding: 2vh;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .PNF {
+            font-size: 5vh;
+            margin-bottom: 2vh;
+            text-align: center;
+        }
+
+        .container2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .section {
+            width: 100%;
+        }
+
+        .section h2 {
+            font-size: 3vh;
+            text-align: left;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: "";
+            display: block;
+            width: 30%;
+            height: 0.3vh;
+            background: black;
+        }
+
+        .SecondForth {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            padding-top: 2vh;
+        }
+
+        .ForthForth {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            padding-top: 2vh;
+        }
+
+        .box {
+            aspect-ratio: 2 / 3;
+            max-height: 30vh;
+            width: 28vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 1vh;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid white;
+            border-radius: 10px;
+            padding: 1vh;
+        }
+
+        .box img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 75%;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 1vh;
+        }
+
+        .description {
+            padding: 1vh;
+            font-size: 1.5vh;
+            color: black;
+            text-align: center;
+        }
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- jQuery 라이브러리 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+
+    <!-- Chart.js 라이브러리 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore, collection, doc, updateDoc, getDoc, setDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+        // Firebase 구성 초기화
+        const firebaseConfig = {
+            apiKey: "AIzaSyAtHlJLsyoZ4__m1-eXMaBBvpJNeJD74js",
+            authDomain: "sprta-f3322.firebaseapp.com",
+            projectId: "sprta-f3322",
+            storageBucket: "sprta-f3322.firebasestorage.app",
+            messagingSenderId: "56818984443",
+            appId: "1:56818984443:web:fc1b3289fa5e6e969a575e",
+            measurementId: "G-WZLQRD938T"
+        };
+
+        // Firebase 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        $(document).ready(function () {
+            // 투표 버튼 클릭 이벤트 처리
+            $('#voteBtn').on('click', async function () {
+                const selectedValue = $('input[name="flexRadioDefault"]:checked').val();
+
+                if (selectedValue) {
+                    try {
+                        // Firestore에서 선택한 값에 해당하는 문서 참조
+                        const voteDocRef = doc(db, "votes", selectedValue);
+                        const voteDoc = await getDoc(voteDocRef);
+
+                        if (voteDoc.exists()) {
+                            // 기존 값이 있을 경우 업데이트
+                            const currentCount = voteDoc.data().count || 0;
+                            await updateDoc(voteDocRef, { count: currentCount + 1 });
+                        } else {
+                            // 새로운 값 추가
+                            await setDoc(voteDocRef, { count: 1 });
+                        }
+
+                        alert('투표가 완료되었습니다!');
+                    } catch (error) {
+                        console.error('투표 중 오류 발생:', error);
+                    }
+                } else {
+                    alert('선택된 항목이 없습니다.');
+                }
+            });
+
+            // 결과 보기 버튼 클릭 이벤트 처리
+            $('#showResultsBtn').on('click', async function () {
+                try {
+                    // Firestore에서 votes 컬렉션의 모든 문서 가져오기
+                    const querySnapshot = await getDocs(collection(db, "votes"));
+                    const votesData = {};
+
+                    // 가져온 데이터를 votesData 객체에 저장
+                    querySnapshot.forEach((doc) => {
+                        votesData[doc.id] = doc.data().count;
+                    });
+
+                    // 차트 데이터를 생성
+                    const labels = Object.keys(votesData);
+                    const data = Object.values(votesData);
+
+                    // 기존의 차트를 제거하고 새로 생성
+                    $('#voteChart').remove(); // 기존 캔버스를 제거
+                    $('.graph').html('<canvas id="voteChart"></canvas>'); // 새로운 캔버스 추가
+
+                    // Chart.js를 이용하여 차트 그리기
+                    const ctx = document.getElementById('voteChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: '투표 결과',
+                                data: data,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                },
+                                title: {
+                                    display: true,
+                                    text: '투표 결과'
+                                }
+                            }
+                        }
+                    });
+
+                } catch (error) {
+                    console.error('결과를 가져오는 중 오류 발생:', error);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body class="MainBody">
+
+    <div class="sideBox">
+        <h1 class="voteText">팥붕 VS 슈붕</h1>
+        <div class="graph">
+            <!-- 그래프가 여기에 렌더링됨 (기본적으로 빈칸) -->
+            <span>결과 없음</span>
+        </div>
+        <div class="votes">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="팥붕">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    팥붕
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="슈붕"
+                    checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    슈붕
+                </label>
+            </div>
+        </div>
+        <div class="buttons">
+            <button type="button1" class="btn btn-outline-dark" id="voteBtn">vote</button>
+            <button type="button2" class="btn btn-outline-primary" id="showResultsBtn">show</button>
+        </div>
+    </div>
+
+    <div class="FirstBox">
+        <div class="Firstgreeting">
+            Welcome, fellas!
+        </div>
+    </div>
+
+    <div class="SecondBox">
+
+        <div class="UpperBox">
+            <div class="firstPic">
+
+            </div>
+
+            <div class="container">
+                <h1 class="myInfo">나의 정보</h1>
+                <div class="info-box">
+                    <div class="minInfoBoxes">
+                        <div class="info-item">이름: 방동혁</div>
+                    </div>
+                    <div class="minInfoBoxes">
+                        <div class="info-item">MBTI: INFP</div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="minInfoBoxes">
+                        <div class="info-item">혈액형: A형</div>
+                    </div>
+                    <div class="minInfoBoxes">
+                        <div class="info-item">나이 : 32살</div>
+                    </div>
+                </div>
+
+                <div class="greetingBox">
+                    <p class="greeting">ㅆ프피에 대한 편견을 조금은 깰 수 있는 사람이라고 생각합니다ㅎㅎ 봐주셔서 감사합니다 앞으로 뵐 일 있으면 반갑게 인사해유!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="LowerBox">
+            <div class="firstIntroBox">
+                <div class="firstIntro">어려서부터 우리 집은 가난했었고, 남들 다 하는 외식 한 번 한 적이 없었고, 일터에 나가신 어머님 집에 없으면 언제나 혼자서 끓여먹었던 라면.
+                    그러다 어느날 라면이 너무 지겨워서 맛있는 것좀 먹자고 대들었었어.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ThirdBox">
+        <h1 class="title">My hobbies</h1>
+
+        <div class="scattered-images">
+            <div class="card">
+                <img src="https://ssl.nexon.com/s2/game/elancia/elancia2007/image/game_info/map/map1/img1.gif"
+                    alt="중앙 이미지">
+            </div>
+            <img src="https://image.kmib.co.kr/online_image/2019/0728/611411110013545176_1.jpg" alt="이미지 1"
+                class="card1">
+            <img src="https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=3&simg=202306121645060038242kpm_00.jpg&nmt=48"
+                alt="이미지 2" class="card2">
+            <img src="https://i.namu.wiki/i/LVwPoLGxp4_O9KRZKp5ehWAkBDK45xklMuyfUH3yZZ9oVzsNnvPlw8TAZ0r-mERQx6CZTo0uF4hA4ZSaf87qHA.webp"
+                alt="이미지 3" class="card3">
+            <img src="https://dnvefa72aowie.cloudfront.net/business/bizPlatform/profile/14890745/1673260374999/NjgyOTM3Yjk5MGFiNzhkZDQ1YmY3NjU1MzA3OGM4MTNmZDhlMGJiMzhlYTdhZjAzZTYwNjFlZDJhNjExNmJlMS5qcGc=.jpeg?q=82&s=640x640&t=crop"
+                alt="이미지 4" class="card4">
+        </div>
+    </div>
+
+    <div class="ForthBox">
+        <h1 class="PNF">Past & Future</h1>
+        <div class="container2">
+            <div class="sidebar">
+                <div class="section">
+                    <div class="firstForth">
+                        <h2>Past</h2>
+                    </div>
+
+                    <div class="SecondForth">
+                        <div class="box">
+                            <img src="https://i.namu.wiki/i/LVwPoLGxp4_O9KRZKp5ehWAkBDK45xklMuyfUH3yZZ9oVzsNnvPlw8TAZ0r-mERQx6CZTo0uF4hA4ZSaf87qHA.webp"
+                                alt="Past Image 1">
+                            <div class="description">간단한 설명 1</div>
+                        </div>
+                        <div class="box">
+                            <img src="https://kormedi.com/wp-content/uploads/2022/04/ck_tica1010005154_l-580x387.jpg"
+                                alt="Past Image 2">
+                            <div class="description">간단한 설명 2</div>
+                        </div>
+                        <div class="box">
+                            <img src="https://image.bugsm.co.kr/album/images/500/203001/20300127.jpg"
+                                alt="Past Image 3">
+                            <div class="description">간단한 설명 3</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="section">
+                    <div class="ThirdForth">
+                        <h2>Future</h2>
+                    </div>
+
+                    <div class="ForthForth">
+                        <div class="box">
+                            <img src="https://ilovegangwon.com/data/file/humor/15827113263118.gif" alt="Future Image 1">
+                            <div class="description">간단한 설명 4</div>
+                        </div>
+                        <div class="box">
+                            <img src="https://blog.kakaocdn.net/dn/0dU9E/btrxoHHLcGA/Z3egdaVMXOX40DaYttbO1k/img.jpg"
+                                alt="Future Image 2">
+                            <div class="description">간단한 설명 5</div>
+                        </div>
+                        <div class="box">
+                            <img src="https://dimg.donga.com/wps/NEWS/IMAGE/2021/04/12/106357558.1.jpg"
+                                alt="Future Image 3">
+                            <div class="description">간단한 설명 6</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="">
+
+    </div>
+
+    <div class="box contact-box">
+        <div class="content" style="width: 18rem;">
+            <div class="card-body">
+                <p class="content-text">Contact Me</p>
+                <div class="contactButtons">
+                    <button>
+                        <a class="content-button1" role="button" aria-disabled="true">Link</a>
+                    </button>
+                    <button>
+                        <a class="content-button2" role="button" aria-disabled="true">Link</a>
+                    </button>
+                    <button>
+                        <a class="content-button3" role="button" aria-disabled="true">Link</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
