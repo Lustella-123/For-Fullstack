@@ -6,16 +6,15 @@ import java.util.Scanner;
 
 public class Kiosk {
 
-    Menu menu = new Menu();
-    List<MenuItem> cart = new ArrayList<>();
+    private Menu menu = new Menu();
+    private List<MenuItem> cart = new ArrayList<>();
 
     public void startKiosk() {
-
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
 
         while (!exit) {
-            menu.showMenu();
+            menu.showMenu(); // 메인 메뉴 출력
 
             int selectMenu = 0;
             boolean isValid = false;
@@ -26,6 +25,7 @@ public class Kiosk {
                     System.out.print("메뉴를 선택하세요: ");
                     selectMenu = scanner.nextInt();
 
+                    // 종료 옵션 처리
                     if (selectMenu == 0) {
                         System.out.println("프로그램을 종료합니다.");
                         exit = true;
@@ -43,6 +43,7 @@ public class Kiosk {
 
             if (exit) break;
 
+            // 장바구니 관리 메뉴로 이동
             if (selectMenu == 4) {
                 manageCart(scanner);
                 continue;
@@ -61,10 +62,12 @@ public class Kiosk {
                     System.out.print("세부 메뉴를 선택하세요: ");
                     selectMenuItem = scanner.nextInt();
 
+                    // 뒤로가기 옵션 처리
                     if (selectMenuItem == 0) {
                         System.out.println("메인 메뉴로 돌아갑니다.");
                         isValid = true;
                     } else if (selectMenuItem > 0 && selectMenuItem <= 4) {
+                        // 선택한 메뉴 항목 가져오기
                         if (selectMenu == 1) {
                             selectedItem = menu.getBurgers().get(selectMenuItem - 1);
                         } else if (selectMenu == 2) {
@@ -73,9 +76,10 @@ public class Kiosk {
                             selectedItem = menu.getDesserts().get(selectMenuItem - 1);
                         }
 
+                        // 장바구니에 추가
                         if (selectedItem != null) {
                             cart.add(selectedItem);
-                            System.out.println("선택한 메뉴: " + selectedItem.name + " / " + selectedItem.price + " / " + selectedItem.description);
+                            System.out.println("선택한 메뉴: " + selectedItem.getName() + " / " + selectedItem.getPrice() + " / " + selectedItem.getDescription());
                             showCart();
                             isValid = true;
                         }
@@ -90,12 +94,13 @@ public class Kiosk {
         }
     }
 
+    // 장바구니 표시
     private void showCart() {
         System.out.println();
         System.out.println("=== 장바구니 ===");
         int i = 1;
         for (MenuItem item : cart) {
-            System.out.println(i + ". " + item.name + " / " + item.price);
+            System.out.println(i + ". " + item.getName() + " / " + item.getPrice());
             i++;
         }
         if (cart.isEmpty()) {
@@ -103,6 +108,7 @@ public class Kiosk {
         }
     }
 
+    // 장바구니 관리
     private void manageCart(Scanner scanner) {
         while (true) {
             showCart();
@@ -115,10 +121,12 @@ public class Kiosk {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
+                    // 구매 완료 처리
                     System.out.println("구매가 완료되었습니다. 프로그램을 종료합니다.");
                     System.exit(0);
                     break;
                 case 2:
+                    // 장바구니에서 항목 제거
                     if (cart.isEmpty()) {
                         System.out.println("장바구니가 비어 있습니다. 제거할 항목이 없습니다.");
                     } else {
@@ -126,13 +134,14 @@ public class Kiosk {
                         int removeIndex = scanner.nextInt() - 1;
                         if (removeIndex >= 0 && removeIndex < cart.size()) {
                             MenuItem removedItem = cart.remove(removeIndex);
-                            System.out.println(removedItem.name + "이(가) 장바구니에서 제거되었습니다.");
+                            System.out.println(removedItem.getName() + "이(가) 장바구니에서 제거되었습니다.");
                         } else {
                             System.out.println("잘못된 번호입니다. 다시 시도해주세요.");
                         }
                     }
                     break;
                 case 3:
+                    // 뒤로가기
                     return;
                 default:
                     System.out.println("잘못된 선택입니다. 다시 입력해주세요.");

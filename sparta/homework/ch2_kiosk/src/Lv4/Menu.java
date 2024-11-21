@@ -49,7 +49,7 @@ public class Menu {
             System.out.println();
             System.out.println("[ BURGERS MENU ]");
             for (MenuItem item : Burgers) {
-                System.out.println(i + "/ " + item.name + "/ " + item.price + "/ " + item.description);
+                System.out.println(i + "/ " + item.getName() + "/ " + item.getPrice() + "/ " + item.getDescription());
                 i++;
             }
             System.out.println("0. 뒤로가기");
@@ -57,7 +57,7 @@ public class Menu {
             System.out.println();
             System.out.println("[ DRINKS MENU ]");
             for (MenuItem item : Drinks) {
-                System.out.println(i + "/ " + item.name + "/ " + item.price + "/ " + item.description);
+                System.out.println(i + "/ " + item.getName() + "/ " + item.getPrice() + "/ " + item.getDescription());
                 i++;
             }
             System.out.println("0. 뒤로가기");
@@ -65,7 +65,7 @@ public class Menu {
             System.out.println();
             System.out.println("[ DESSERTS MENU ]");
             for (MenuItem item : Desserts) {
-                System.out.println(i + "/ " + item.name + "/ " + item.price + "/ " + item.description);
+                System.out.println(i + "/ " + item.getName() + "/ " + item.getPrice() + "/ " + item.getDescription());
                 i++;
             }
             System.out.println("0. 뒤로가기");
